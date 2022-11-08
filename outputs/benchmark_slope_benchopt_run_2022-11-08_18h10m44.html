@@ -1,0 +1,3354 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+        <title>Result on slope benchmark</title>
+
+        <style>
+            /*
+! tailwindcss v3.1.2 | MIT License | https://tailwindcss.com
+*/
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+*/
+
+html {
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+  /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font family by default.
+2. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::-webkit-backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.inset-0 {
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.flex {
+  display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
+}
+
+.table {
+  display: table;
+}
+
+.grid {
+  display: grid;
+}
+
+.hidden {
+  display: none;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
+.h-10 {
+  height: 2.5rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.h-6 {
+  height: 1.5rem;
+}
+
+.h-5 {
+  height: 1.25rem;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.min-h-full {
+  min-height: 100%;
+}
+
+.w-96 {
+  width: 24rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
+.min-w-0 {
+  min-width: 0px;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.border-gray-800 {
+  --tw-border-opacity: 1;
+  border-color: rgb(31 41 55 / var(--tw-border-opacity));
+}
+
+.border-transparent {
+  border-color: transparent;
+}
+
+.bg-gray-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+}
+
+.bg-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+}
+
+.bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+
+.bg-blue-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+}
+
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.bg-opacity-75 {
+  --tw-bg-opacity: 0.75;
+}
+
+.p-1 {
+  padding: 0.25rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
+}
+
+.pb-0 {
+  padding-bottom: 0;
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.leading-7 {
+  line-height: 1.75rem;
+}
+
+.leading-6 {
+  line-height: 1.5rem;
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-gray-100 {
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
+.text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-blue-600 {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
+
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.hover\:bg-blue-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 64 175 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.focus\:border-blue-500:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity));
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus\:ring-2:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\:ring-inset:focus {
+  --tw-ring-inset: inset;
+}
+
+.focus\:ring-blue-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-white:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(255 255 255 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-gray-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(107 114 128 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-offset-2:focus {
+  --tw-ring-offset-width: 2px;
+}
+
+@media (min-width: 640px) {
+  .sm\:my-8 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .sm\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .sm\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .sm\:ml-3 {
+    margin-left: 0.75rem;
+  }
+
+  .sm\:ml-4 {
+    margin-left: 1rem;
+  }
+
+  .sm\:block {
+    display: block;
+  }
+
+  .sm\:flex {
+    display: flex;
+  }
+
+  .sm\:hidden {
+    display: none;
+  }
+
+  .sm\:h-10 {
+    height: 2.5rem;
+  }
+
+  .sm\:w-full {
+    width: 100%;
+  }
+
+  .sm\:w-10 {
+    width: 2.5rem;
+  }
+
+  .sm\:w-auto {
+    width: auto;
+  }
+
+  .sm\:max-w-lg {
+    max-width: 32rem;
+  }
+
+  .sm\:flex-row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  .sm\:items-start {
+    align-items: flex-start;
+  }
+
+  .sm\:items-center {
+    align-items: center;
+  }
+
+  .sm\:items-stretch {
+    align-items: stretch;
+  }
+
+  .sm\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .sm\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .sm\:truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .sm\:p-0 {
+    padding: 0px;
+  }
+
+  .sm\:p-6 {
+    padding: 1.5rem;
+  }
+
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .sm\:pb-4 {
+    padding-bottom: 1rem;
+  }
+
+  .sm\:text-left {
+    text-align: left;
+  }
+
+  .sm\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .sm\:mr-6 {
+    margin-right: 1.5rem; /* 24px */
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:inline {
+    display: inline;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:hidden {
+    display: none;
+  }
+
+  .md\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .md\:text-left {
+    text-align: left;
+  }
+
+  .md\:block {
+    display: block;
+  }
+
+  .md\:inline-block {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .lg\:ml-4 {
+    margin-left: 1rem;
+  }
+
+  .lg\:flex {
+    display: flex;
+  }
+
+  .lg\:items-center {
+    align-items: center;
+  }
+
+  .lg\:justify-between {
+    justify-content: space-between;
+  }
+
+  .lg\:inline {
+    display: inline;
+  }
+
+  .lg\:hidden {
+    display: none;
+  }
+
+  .lg\:justify-start {
+    justify-content: flex-start;
+  }
+
+  .lg\:text-left {
+    text-align: left;
+  }
+
+  .lg\:block {
+    display:block;
+  }
+}
+
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.px-10 {
+  padding-left: 2.5rem; /* 40px */
+  padding-right: 2.5rem; /* 40px */
+}
+
+.py-10 {
+  padding-top: 2.5rem; /* 40px */
+  padding-bottom: 2.5rem; /* 40px */
+}
+
+.mb-4 {
+  margin-bottom: 1rem; /* 16px */
+}
+
+.mt-4 {
+  margin-top: 1rem; /* 16px */
+}
+
+.mr-6 {
+  margin-right: 1.5rem; /* 24px */
+}
+
+.mr-4 {
+  margin-right: 1rem; /* 24px */
+}
+
+.rounded {
+  border-radius: 0.25rem; /* 4px */
+}
+
+
+            /*----------------------------------------*/
+/***** Stylesheet for the hover index *****/
+/*----------------------------------------*/
+
+/* Place rectangles in a grid */
+.grid {
+  position: relative; /* each rectangle is dependant of others */
+  margin: 0 auto;
+  padding: 1em 0 4em; /* padding top horizontal bottom */
+  display: grid; /* type of boxes generated */
+  max-width: 1000px;
+  list-style: none; /* no item */
+  text-align: center;
+  column-gap: 2em; /* space between columns */
+}
+
+/* Figure inside grid */
+.grid figure {
+  position: relative;
+  float: left;
+  overflow: hidden; /* overflow not taken into account */
+  margin: 10px 1%;
+  width: 100%; /* 100% of the column */
+  background: #3085a3;
+  text-align: center;
+  cursor: pointer; /* change shape cursor */
+  border-radius: 30px; /* rounded corners */
+}
+
+/* Each figure contains an img */
+.grid figure img {
+  position: relative;
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  opacity: 1; /* over a dummy image */
+}
+
+/* Style caption (title of benchmarks) */
+.grid figure figcaption {
+  padding: 0.1em; /* add space */
+  color: #fff; /* writing color */
+  text-transform: uppercase; /* title in uppercase */
+  font-size: 1.25em;
+}
+
+/* Small sized screens */
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  } /* split in 2 columns */
+}
+
+/* Larger sized screens */
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  } /* split in 3 columns */
+}
+
+/* Position and style of <a> elements (the View more) */
+.grid figure figcaption,
+.grid figure figcaption > a {
+  position: absolute;
+  top: 0em; /* no space offset top */
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* only to figcaption <a> tag */
+.grid figure figcaption > a {
+  z-index: 1000; /* top level */
+  text-indent: 0%;
+  white-space: nowrap;
+  font-size: 0; /* do not display the View more */
+  opacity: 1;
+}
+
+/* h2: Problem name (LASSO, ...) */
+.grid figure h2 {
+  word-spacing: 0em;
+  font-weight: 300;
+}
+
+.grid figure h2 span {
+  font-weight: 800;
+}
+
+.grid figure h2,
+.grid figure p {
+  margin: 0;
+}
+
+/* p: number of files */
+.grid figure p {
+  letter-spacing: 1px;
+  font-size: 70%;
+}
+
+/* Default color */
+figure.effect-ruby {
+  background-color: #2c3e50;
+}
+
+/* Color when hovering */
+figure.effect-ruby:hover {
+  background-color: DodgerBlue;
+}
+
+/* Define transformation */
+figure.effect-ruby img {
+  opacity: 0;
+  transition: opacity 0.35s, transform 0.35s; /* transition time */
+  transform: scale(1.15); /* size transformation -> bigger */
+}
+
+/* transformation with hovering */
+figure.effect-ruby:hover img {
+  opacity: 0;
+  transform: scale(1); /* size -> smaller */
+}
+
+/* Apply effect to problem name */
+figure.effect-ruby h2 {
+  margin-top: 0;
+  transition: transform 0.35s; /* transition time */
+  transform: translate3d(0, calc((150px - 100%)/2), 0);
+  font-size: 1.25em; /* default font */
+}
+
+figure.effect-ruby p {
+  margin: 2em -1em 2em -1em;
+  padding: 1em 0em 1em 0em;
+  border: 1px solid #fff; /* create sort of white frame */
+  opacity: 0;
+  transition: opacity 0.35s, transform 0.35s;
+  transform: translate3d(0, 20px, 0) scale(1.1); /* size transform */
+}
+
+/* Transform title on hover */
+figure.effect-ruby:hover h2 {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0px, 10px, 0) scale(0.8); /* smaller */
+  margin-top: 0em; /* move up */
+}
+
+figure.effect-ruby:hover p {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1.2); /* placement in box */
+}
+
+/* Button for inside the table with system informations */
+.buttoncent {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  text-align: center;
+}
+
+/* button for inside text
+ in benchmark page above graph for system informations */
+.buttonleft {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  text-align: center;
+  margin-left: 1px; /* add margin */
+}
+
+
+/* switch slider with an adaptable height.
+Change switch-height and switch-padding, and all the dimensions are adjusted.
+See https://stackoverflow.com/questions/70590125/how-to-change-the-size-of-a-css-toggle-switch */
+* {
+  --switch-height: 20px;
+  --switch-padding: 2px;
+  --switch-width: calc((var(--switch-height) * 2) - var(--switch-padding));
+  --slider-height: calc(var(--switch-height) - var(--switch-padding));
+  --slider-on: calc(var(--switch-height) - var(--switch-padding));
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: var(--switch-width);
+  height: var(--switch-height);
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: var(--slider-height);
+  width: var(--slider-height);
+  left: calc(var(--switch-padding) / 2);
+  bottom: calc(var(--switch-padding) / 2);
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(var(--slider-on));
+  -ms-transform: translateX(var(--slider-on));
+  transform: translateX(var(--slider-on));
+}
+
+.slider.round {
+  border-radius: var(--slider-height);
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*----------------------------------------*/
+/***** Brand text animated *****/
+/*----------------------------------------*/
+
+
+.ml11 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+}
+
+.ml11 .line {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #fff;
+  transform-origin: 0 50%;
+}
+
+.ml11 .line1 { 
+  top: 0; 
+  left: 0;
+}
+
+.ml11 .letter {
+  display: inline-block;
+  line-height: 1em;
+  font-family: 'Kanit', sans-serif;
+}
+
+/*----------------------------------------*/
+/***** Plot *****/
+/*----------------------------------------*/
+
+@media (min-width: 768px) {
+  #unique_plot {
+    flex: 1 1 0%;
+  }
+}
+
+@media (max-width: 767px) {
+  #unique_plot {
+    flex: initial;
+    flex-shrink: 0;
+  }
+}
+
+.js-plotly-plot .plotly .modebar {
+  transform: translateX(-30px);
+}
+
+/*----------------------------------------*/
+/***** Custom legend *****/
+/*----------------------------------------*/
+
+#plot_legend {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#legend_title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#legend_help {
+  font-size: 0.75rem;
+  color: #475569;
+}
+
+.space-r-2 > * {
+  margin-right: 0.5rem;
+}
+
+        </style>
+    </head>
+    <body>
+        <!-- Two main columns container -->
+        <div class="flex">
+            <!-- Left column on big screen (plot selectors) -->
+            <div class="hidden lg:flex flex-col w-96 bg-gray-700">
+                <div class="h-screen">
+                    <div class="px-8 h-16 flex items-center bg-gray-800">
+                        <h1 class="ml11">
+                            <span class="text-wrapper">
+                                <span class="line line1"></span>
+                                <span id="brand" class="hidden letters text-2xl text-white">Benchopt</span>
+                            </span>
+                        </h1>
+                    </div>
+                    <div class="flex-1 flex flex-col">
+                        <div class="mt-10 px-8">
+                            <label for="dataset_selector" class="block text-sm font-medium text-white">Dataset:</label>
+                            <div class="mt-1 rounded-md shadow-sm">
+                                <select id="dataset_selector" class="focus:ring-blue-500 focus:border-blue-500 block w-full h-8 px-4 sm:text-sm border-gray-300 rounded-md" onchange="setState({dataset: this.value})">
+                                    <option value="breheny[dataset=bcTCGA,standardize=True]">breheny[dataset=bcTCGA,standardize=True]</option>
+                                    <option value="breheny[dataset=bcTCGA,standardize=False]">breheny[dataset=bcTCGA,standardize=False]</option>
+                                    <option value="breheny[dataset=Rhee2006,standardize=True]">breheny[dataset=Rhee2006,standardize=True]</option>
+                                    <option value="breheny[dataset=Rhee2006,standardize=False]">breheny[dataset=Rhee2006,standardize=False]</option>
+                                    <option value="breheny[dataset=Scheetz2006,standardize=True]">breheny[dataset=Scheetz2006,standardize=True]</option>
+                                    <option value="breheny[dataset=Scheetz2006,standardize=False]">breheny[dataset=Scheetz2006,standardize=False]</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-8 px-8">
+                            <label for="objective_selector" class="block text-sm font-medium text-white">Objective:</label>
+                            <div class="mt-1 rounded-md shadow-sm">
+                                <select id="objective_selector" class="focus:ring-blue-500 focus:border-blue-500 block w-full h-8 px-4 sm:text-sm border-gray-300 rounded-md" onchange="setState({objective: this.value})">
+                                    <option value="SLOPE[q=0.2,reg=0.5]">SLOPE[q=0.2,reg=0.5]</option>
+                                    <option value="SLOPE[q=0.1,reg=0.5]">SLOPE[q=0.1,reg=0.5]</option>
+                                    <option value="SLOPE[q=0.05,reg=0.5]">SLOPE[q=0.05,reg=0.5]</option>
+                                    <option value="SLOPE[q=0.2,reg=0.1]">SLOPE[q=0.2,reg=0.1]</option>
+                                    <option value="SLOPE[q=0.1,reg=0.1]">SLOPE[q=0.1,reg=0.1]</option>
+                                    <option value="SLOPE[q=0.05,reg=0.1]">SLOPE[q=0.05,reg=0.1]</option>
+                                    <option value="SLOPE[q=0.2,reg=0.02]">SLOPE[q=0.2,reg=0.02]</option>
+                                    <option value="SLOPE[q=0.1,reg=0.02]">SLOPE[q=0.1,reg=0.02]</option>
+                                    <option value="SLOPE[q=0.05,reg=0.02]">SLOPE[q=0.05,reg=0.02]</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-8 px-8">
+                            <label for="objective_column" class="block text-sm font-medium text-white">Objective column</label>
+                            <div class="mt-1 rounded-md shadow-sm">
+                                <select id="objective_column" class="focus:ring-blue-500 focus:border-blue-500 block w-full h-8 px-4 sm:text-sm border-gray-300 rounded-md" onchange="setState({objective_column: this.value})">
+                                    <option value="objective_value">objective_value</option>
+                                    <option value="objective_duality_gap">objective_duality_gap</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mt-8 px-8">
+                            <label for="plot_kind" class="block text-sm font-medium text-white">Chart type</label>
+                            <div class="mt-1 rounded-md shadow-sm">
+                                <select id="plot_kind" class="focus:ring-blue-500 focus:border-blue-500 block w-full h-8 px-4 sm:text-sm border-gray-300 rounded-md" onchange="setState({plot_kind: this.value})">
+                                    <option value="objective_curve">objective_curve</option>
+                                    <option value="suboptimality_curve">suboptimality_curve</option>
+                                    <option value="relative_suboptimality_curve">relative_suboptimality_curve</option>
+                                    <option value="bar_chart">bar_chart</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="scale-form-group" class="mt-8 px-8">
+                            <label for="change_scaling" class="block text-sm font-medium text-white">Scale</label>
+                            <div class="mt-1 rounded-md shadow-sm">
+                                <select id="change_scaling" class="focus:ring-blue-500 focus:border-blue-500 block w-full h-8 px-4 sm:text-sm border-gray-300 rounded-md" onchange="setState({scale: this.value})">
+                                    <option value="semilog-y">semilog-y</option>
+                                    <option value="semilog-x">semilog-x</option>
+                                    <option value="loglog">loglog</option>
+                                    <option value="linear">linear</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-8 px-8">
+                            <div class="block text-sm font-medium text-white">Quantiles</div>
+                            <label class="block switch">
+                                <input id="change_shades" type="checkbox" checked onchange="setState({with_quantiles: this.checked})">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right column on big screen and main column on mobile -->
+            <div class="w-full flex flex-col overflow-scroll">
+                <!-- Main menu -->
+                <nav class="bg-blue-600">
+                    <div class="px-4">
+                        <div class="relative flex items-center justify-between h-16">
+                            <!-- mobile navbar -->
+                            <div class="absolute inset-0 flex items-center justify-between lg:hidden">
+                                <!-- Mobile menu brand text -->
+                                <span class="text-white text-xl">
+                                    Benchopt
+                                </span>
+                                <!-- Mobile menu button-->
+                                <button type="button" id="btn-main-menu" class="inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                                    <span class="sr-only">Open main menu</span>
+                                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                                    </svg>
+                                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <!-- big screen navbar-->
+                            <div class="flex-1 flex items-center justify-center lg:items-stretch lg:justify-start">
+                                <div class="hidden lg:block">
+                                    <div class="flex space-x-4">
+                                        <a href="benchmark_slope.html" class="text-gray-100 hover:bg-blue-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+                                        <a href="https://benchopt.github.io" class="text-gray-100 hover:bg-blue-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium" target="_blank">Website</a>
+                                        <a href="https://github.com/benchopt/benchopt" class="text-gray-100 hover:bg-blue-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium" target="_blank">Github</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile menu, show/hide based on menu state. -->
+                    <div class="hidden" id="mobile-menu">
+                        <div class="px-2 pt-2 pb-3 space-y-1">
+                            <a href="benchmark_slope.html" class="text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Home</a>
+                            <a href="https://benchopt.github.io" class="text-white block px-3 py-2 rounded-md text-base font-medium">Website</a>
+                            <a href="https://github.com/benchopt/benchopt" class="text-white block px-3 py-2 rounded-md text-base font-medium">Github</a>
+                            <a href="benchopt_run_2022-11-08_18h10m44.parquet" class="text-white block px-3 py-2 rounded-md text-base font-medium">Download data</a>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Plot menu for mobiles -->
+                <nav class="lg:hidden bg-gray-700">
+                    <div class="px-4" id="btn-plot-config">
+                        <div class="relative flex items-center justify-between h-10">
+                            <div class="absolute inset-0 flex items-center justify-between lg:hidden">
+                                <!-- Mobile menu button-->
+                                <span class="flex items-center space-x-2 text-white">
+                                    <span>Change plot</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                                    </svg>
+                                </span>
+                                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                                    <span class="sr-only">Open main menu</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile menu, show/hide based on menu state. -->
+                    <div class="hidden" id="mobile-plot-form">
+                        <div class="px-2 pt-2 pb-3 space-y-4">
+                            <div class="px-8">
+                                <label for="dataset_selector" class="block text-sm font-medium text-white">Dataset:</label>
+                                <div class="mt-1 rounded-md shadow-sm">
+                                    <select id="dataset_selector" class="focus:ring-blue-500 focus:border-blue-500 block w-full h-8 px-4 sm:text-sm border-gray-300 rounded-md" onchange="setState({dataset: this.value})">
+                                        <option value="breheny[dataset=bcTCGA,standardize=True]">breheny[dataset=bcTCGA,standardize=True]</option>
+                                        <option value="breheny[dataset=bcTCGA,standardize=False]">breheny[dataset=bcTCGA,standardize=False]</option>
+                                        <option value="breheny[dataset=Rhee2006,standardize=True]">breheny[dataset=Rhee2006,standardize=True]</option>
+                                        <option value="breheny[dataset=Rhee2006,standardize=False]">breheny[dataset=Rhee2006,standardize=False]</option>
+                                        <option value="breheny[dataset=Scheetz2006,standardize=True]">breheny[dataset=Scheetz2006,standardize=True]</option>
+                                        <option value="breheny[dataset=Scheetz2006,standardize=False]">breheny[dataset=Scheetz2006,standardize=False]</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="px-8">
+                                <label for="objective_selector" class="block text-sm font-medium text-white">Objective:</label>
+                                <div class="mt-1 rounded-md shadow-sm">
+                                    <select id="objective_selector" class="focus:ring-blue-500 focus:border-blue-500 block w-full h-8 px-4 sm:text-sm border-gray-300 rounded-md" onchange="setState({objective: this.value})">
+                                        <option value="SLOPE[q=0.2,reg=0.5]">SLOPE[q=0.2,reg=0.5]</option>
+                                        <option value="SLOPE[q=0.1,reg=0.5]">SLOPE[q=0.1,reg=0.5]</option>
+                                        <option value="SLOPE[q=0.05,reg=0.5]">SLOPE[q=0.05,reg=0.5]</option>
+                                        <option value="SLOPE[q=0.2,reg=0.1]">SLOPE[q=0.2,reg=0.1]</option>
+                                        <option value="SLOPE[q=0.1,reg=0.1]">SLOPE[q=0.1,reg=0.1]</option>
+                                        <option value="SLOPE[q=0.05,reg=0.1]">SLOPE[q=0.05,reg=0.1]</option>
+                                        <option value="SLOPE[q=0.2,reg=0.02]">SLOPE[q=0.2,reg=0.02]</option>
+                                        <option value="SLOPE[q=0.1,reg=0.02]">SLOPE[q=0.1,reg=0.02]</option>
+                                        <option value="SLOPE[q=0.05,reg=0.02]">SLOPE[q=0.05,reg=0.02]</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="px-8">
+                                <label for="objective_column" class="block text-sm font-medium text-white">Objective column</label>
+                                <div class="mt-1 rounded-md shadow-sm">
+                                    <select id="objective_column" class="focus:ring-blue-500 focus:border-blue-500 block w-full h-8 px-4 sm:text-sm border-gray-300 rounded-md" onchange="setState({objective_column: this.value})">
+                                        <option value="objective_value">objective_value</option>
+                                        <option value="objective_duality_gap">objective_duality_gap</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="px-8">
+                                <label for="plot_kind" class="block text-sm font-medium text-white">Chart type</label>
+                                <div class="mt-1 rounded-md shadow-sm">
+                                    <select id="plot_kind" class="focus:ring-blue-500 focus:border-blue-500 block w-full h-8 px-4 sm:text-sm border-gray-300 rounded-md" onchange="setState({plot_kind: this.value})">
+                                        <option value="objective_curve">objective_curve</option>
+                                        <option value="suboptimality_curve">suboptimality_curve</option>
+                                        <option value="relative_suboptimality_curve">relative_suboptimality_curve</option>
+                                        <option value="bar_chart">bar_chart</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="scale-form-group" class="px-8">
+                                <label for="change_scaling" class="block text-sm font-medium text-white">Scale</label>
+                                <div class="mt-1 rounded-md shadow-sm">
+                                    <select id="change_scaling" class="focus:ring-blue-500 focus:border-blue-500 block w-full h-8 px-4 sm:text-sm border-gray-300 rounded-md" onchange="setState({scale: this.value})">
+                                        <option value="semilog-y">semilog-y</option>
+                                        <option value="semilog-x">semilog-x</option>
+                                        <option value="loglog">loglog</option>
+                                        <option value="linear">linear</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-8 px-8">
+                                <div class="block text-sm font-medium text-white">Quantiles</div>
+                                <label class="block switch">
+                                    <input id="change_shades" type="checkbox" checked onchange="setState({with_quantiles: this.checked})">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Page heading -->
+                <div class="px-4 pt-4 pb-1 md:py-4 lg:flex lg:items-center lg:justify-between">
+                    <div class="flex-1 min-w-0">
+                        <h2 class="w-full text-center lg:text-left text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Result on slope benchmark</h2>
+                        <div class="mt-1 flex flex-wrap justify-center lg:justify-start sm:mt-0">
+                            <div class="mt-2 sm:mr-6 hidden md:flex items-center text-sm text-gray-500">
+                                <span class="font-bold"></span>CPU : 8
+                            </div>
+                            <div class="mt-2 sm:mr-6 hidden md:flex items-center text-sm text-gray-500">
+                                <span class="font-bold"></span>RAM (GB) : 16
+                            </div>
+                            <div class="mt-2">
+                                <button class="inline-flex items-center px-2 py-1 space-x-2 border border-gray-500 rounded-md shadow-sm text-sm font-medium text-gray-500 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" onclick="document.getElementById('system-modal').style.display = 'block'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="hidden md:inline-block text-sm">Show more</span>
+                                    <span class="md:hidden text-sm">Show system information</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex mt-5 lg:mt-0 lg:ml-4">
+                        <span>
+                            <a href="benchopt_run_2022-11-08_18h10m44.parquet" class="inline-flex items-center px-4 py-2 space-x-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                <span class="hidden lg:inline">Download data</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Plot -->
+                <div id="unique_plot"></div>
+                <div id="legend_container" class="py-10 bg-slate-200">
+                    <div id="legend_title" class="px-10 mb-4">
+                        Solvers <span id="legend_help">(Click on a solver to hide it or double click to hide all the others)</span>
+                    </div>
+                    <div id="plot_legend" class="px-10 space-r-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- System information modal -->
+        <div id="system-modal" class="hidden relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+            <div class="fixed z-10 inset-0 overflow-y-auto">
+                <div class="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+                    <div class="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div class="sm:flex sm:items-start">
+                                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">System information</h3>
+                                    <div class="mt-2">
+                                        <ul class="text-sm text-gray-500">
+                                            <li> <b>CPU</b>: 8 </li>
+                                            <li> <b>RAM (GB)</b>: 16 </li>
+                                            <li> <b>platform</b>: Windows10-AMD64 </li>
+                                            <li> <b>processor</b>: Intel64 Family 6 Model 140 Stepping 1, GenuineIntel </li>
+                                            
+                                            <li> <b>numpy</b>: 1.23.4  </li>
+                                            
+                                            <li> <b>scipy</b>: 1.9.3 </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                            <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="document.getElementById('system-modal').style.display = 'none'">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
+        <!-- Used for the brand animation -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <!-- Define the brand animation -->
+        <script>
+            var textWrapper = document.querySelector('.ml11 .letters');
+            textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+            window.addEventListener('load', () => {
+                document.getElementById('brand').style.display = 'inline';
+
+                anime.timeline({loop: false})
+                    .add({
+                        targets: '.ml11 .line',
+                        scaleY: [0,1],
+                        opacity: [0.5,1],
+                        easing: "easeOutExpo",
+                        duration: 700
+                    })
+                    .add({
+                        targets: '.ml11 .line',
+                        translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+                        easing: "easeOutExpo",
+                        duration: 700,
+                        delay: 100
+                    }).add({
+                        targets: '.ml11 .letter',
+                        opacity: [0,1],
+                        easing: "easeOutExpo",
+                        duration: 600,
+                        offset: '-=775',
+                        delay: (el, i) => 34 * (i+1)
+                    }).add({
+                        targets: '.ml11 .line',
+                        scaleY: [1,0],
+                        opacity: [1,0.5],
+                        easing: "easeOutExpo",
+                        duration: 700,
+                        translateX: [document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+                    });
+            });
+        </script>
+        <!-- Manage plot -->
+        <script>
+            window.data = {"breheny[dataset=bcTCGA,standardize=True]": {"SLOPE[q=0.2,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.8425972000113688, 0.8505211000156123, 0.8581957000133116, 0.8673815000220202, 0.8756418999982998, 0.8919308999902569], "y": [1.3178432449343171, 1.3124434961622988, 1.3097432470015198, 1.307641220839933, 1.3059706518947407, 1.3033609047420731], "q1": [0.8425972000113688, 0.8505211000156123, 0.8581957000133116, 0.8673815000220202, 0.8756418999982998, 0.8919308999902569], "q9": [0.8425972000113688, 0.8505211000156123, 0.8581957000133116, 0.8673815000220202, 0.8756418999982998, 0.8919308999902569]}, "bar": {"y": 0.8919308999902569, "times": [0.8919308999902569], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.303360904642073, "max_f_0": 1.3124434961622988}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.8425972000113688, 0.8505211000156123, 0.8581957000133116, 0.8673815000220202, 0.8756418999982998, 0.8919308999902569], "y": [0.3294608112335792, 0.28092499772836876, 0.25308527502294265, 0.23052061469693164, 0.21322272574156664, 0.1940620754060951], "q1": [0.8425972000113688, 0.8505211000156123, 0.8581957000133116, 0.8673815000220202, 0.8756418999982998, 0.8919308999902569], "q9": [0.8425972000113688, 0.8505211000156123, 0.8581957000133116, 0.8673815000220202, 0.8756418999982998, 0.8919308999902569]}, "bar": {"y": 0.8919308999902569, "times": [0.8919308999902569], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.1940620753060951, "max_f_0": 0.28092499772836876}}}, "SLOPE[q=0.1,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.083795199985616, 1.0923832999833394, 1.1013344999810215, 1.1096718999906443, 1.1179862999997567, 1.1350129999918863], "y": [1.3178432449343171, 1.3134469888163247, 1.3110059057427284, 1.308988759974256, 1.307320359625309, 1.3046699172250107], "q1": [1.083795199985616, 1.0923832999833394, 1.1013344999810215, 1.1096718999906443, 1.1179862999997567, 1.1350129999918863], "q9": [1.083795199985616, 1.0923832999833394, 1.1013344999810215, 1.1096718999906443, 1.1179862999997567, 1.1350129999918863]}, "bar": {"y": 1.1350129999918863, "times": [1.1350129999918863], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.3046699171250107, "max_f_0": 1.3134469888163247}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.083795199985616, 1.0923832999833394, 1.1013344999810215, 1.1096718999906443, 1.1179862999997567, 1.1350129999918863], "y": [0.3294608112335792, 0.28556913887342184, 0.2609950664105827, 0.24021777598872074, 0.22353807484851473, 0.2009398632774837], "q1": [1.083795199985616, 1.0923832999833394, 1.1013344999810215, 1.1096718999906443, 1.1179862999997567, 1.1350129999918863], "q9": [1.083795199985616, 1.0923832999833394, 1.1013344999810215, 1.1096718999906443, 1.1179862999997567, 1.1350129999918863]}, "bar": {"y": 1.1350129999918863, "times": [1.1350129999918863], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.2009398631774837, "max_f_0": 0.28556913887342184}}}, "SLOPE[q=0.05,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.022677900007693, 1.0308750999975018, 1.0384391999978106, 1.0457983999804128, 1.053670900000725, 1.0698585000063758], "y": [1.3178432449343171, 1.3141119710986893, 1.3118785210982193, 1.3099507574219367, 1.3083118531078661, 1.3056541385974434], "q1": [1.022677900007693, 1.0308750999975018, 1.0384391999978106, 1.0457983999804128, 1.053670900000725, 1.0698585000063758], "q9": [1.022677900007693, 1.0308750999975018, 1.0384391999978106, 1.0457983999804128, 1.053670900000725, 1.0698585000063758]}, "bar": {"y": 1.0698585000063758, "times": [1.0698585000063758], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.3056541384974434, "max_f_0": 1.3141119710986893}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.022677900007693, 1.0308750999975018, 1.0384391999978106, 1.0457983999804128, 1.053670900000725, 1.0698585000063758], "y": [0.3294608112335792, 0.28985833063987076, 0.26600491343460475, 0.246758027461758, 0.23068853027869274, 0.2060408064212138], "q1": [1.022677900007693, 1.0308750999975018, 1.0384391999978106, 1.0457983999804128, 1.053670900000725, 1.0698585000063758], "q9": [1.022677900007693, 1.0308750999975018, 1.0384391999978106, 1.0457983999804128, 1.053670900000725, 1.0698585000063758]}, "bar": {"y": 1.0698585000063758, "times": [1.0698585000063758], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.2060408063212138, "max_f_0": 0.28985833063987076}}}, "SLOPE[q=0.2,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0335222999856342, 1.0422962000011466, 1.0520178999868222, 1.061764999962179, 1.0700106999720447, 1.0881060999527108], "y": [1.3178432449343171, 1.2749535295756964, 1.2594175587200835, 1.2480520917268396, 1.2387260103777877, 1.224057550537572], "q1": [1.0335222999856342, 1.0422962000011466, 1.0520178999868222, 1.061764999962179, 1.0700106999720447, 1.0881060999527108], "q9": [1.0335222999856342, 1.0422962000011466, 1.0520178999868222, 1.061764999962179, 1.0700106999720447, 1.0881060999527108]}, "bar": {"y": 1.0881060999527108, "times": [1.0881060999527108], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.224057550437572, "max_f_0": 1.2749535295756964}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0335222999856342, 1.0422962000011466, 1.0520178999868222, 1.061764999962179, 1.0700106999720447, 1.0881060999527108], "y": [1.0674530283967971, 0.966271796420967, 0.936985424231974, 0.9147687929100772, 0.8948793821970944, 0.8580575501200274], "q1": [1.0335222999856342, 1.0422962000011466, 1.0520178999868222, 1.061764999962179, 1.0700106999720447, 1.0881060999527108], "q9": [1.0335222999856342, 1.0422962000011466, 1.0520178999868222, 1.061764999962179, 1.0700106999720447, 1.0881060999527108]}, "bar": {"y": 1.0881060999527108, "times": [1.0881060999527108], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.8580575500200274, "max_f_0": 0.966271796420967}}}, "SLOPE[q=0.1,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.010368200019002, 1.0194475000025705, 1.0286138000083156, 1.0373866000154521, 1.0459410999901593, 1.0632273000082932], "y": [1.3178432449343171, 1.2763247004191756, 1.2612314826623165, 1.2502180937037737, 1.241220494087141, 1.2270934508415818], "q1": [1.010368200019002, 1.0194475000025705, 1.0286138000083156, 1.0373866000154521, 1.0459410999901593, 1.0632273000082932], "q9": [1.010368200019002, 1.0194475000025705, 1.0286138000083156, 1.0373866000154521, 1.0459410999901593, 1.0632273000082932]}, "bar": {"y": 1.0632273000082932, "times": [1.0632273000082932], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.2270934507415818, "max_f_0": 1.2763247004191756}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.010368200019002, 1.0194475000025705, 1.0286138000083156, 1.0373866000154521, 1.0459410999901593, 1.0632273000082932], "y": [1.0674530283967971, 0.9681363202817819, 0.9397191192859143, 0.9182013242706227, 0.8989973124248924, 0.863856792376827], "q1": [1.010368200019002, 1.0194475000025705, 1.0286138000083156, 1.0373866000154521, 1.0459410999901593, 1.0632273000082932], "q9": [1.010368200019002, 1.0194475000025705, 1.0286138000083156, 1.0373866000154521, 1.0459410999901593, 1.0632273000082932]}, "bar": {"y": 1.0632273000082932, "times": [1.0632273000082932], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.863856792276827, "max_f_0": 0.9681363202817819}}}, "SLOPE[q=0.05,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.970372200012207, 0.9796257000125479, 0.9886467000178527, 0.9974572000210173, 1.0068970000138506, 1.0239461000019219], "y": [1.3178432449343171, 1.2774215406964797, 1.2626705853524505, 1.2519233988923533, 1.243168365988876, 1.2294298972170463], "q1": [0.970372200012207, 0.9796257000125479, 0.9886467000178527, 0.9974572000210173, 1.0068970000138506, 1.0239461000019219], "q9": [0.970372200012207, 0.9796257000125479, 0.9886467000178527, 0.9974572000210173, 1.0068970000138506, 1.0239461000019219]}, "bar": {"y": 1.0239461000019219, "times": [1.0239461000019219], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.2294298971170463, "max_f_0": 1.2774215406964797}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.970372200012207, 0.9796257000125479, 0.9886467000178527, 0.9974572000210173, 1.0068970000138506, 1.0239461000019219], "y": [1.0674530283967971, 0.9696044389898053, 0.9419166735848545, 0.9209354372676093, 0.9022676596831816, 0.8683937717043428], "q1": [0.970372200012207, 0.9796257000125479, 0.9886467000178527, 0.9974572000210173, 1.0068970000138506, 1.0239461000019219], "q9": [0.970372200012207, 0.9796257000125479, 0.9886467000178527, 0.9974572000210173, 1.0068970000138506, 1.0239461000019219]}, "bar": {"y": 1.0239461000019219, "times": [1.0239461000019219], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.8683937716043428, "max_f_0": 0.9696044389898053}}}, "SLOPE[q=0.2,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0777516999805812, 1.0874116999912076, 1.0974610999692231, 1.1080836999753956, 1.1195295999932569, 1.1376282999990508], "y": [1.3178432449343171, 1.2611280755616734, 1.240315986574401, 1.224158748103117, 1.20990049902976, 1.1853557011081777], "q1": [1.0777516999805812, 1.0874116999912076, 1.0974610999692231, 1.1080836999753956, 1.1195295999932569, 1.1376282999990508], "q9": [1.0777516999805812, 1.0874116999912076, 1.0974610999692231, 1.1080836999753956, 1.1195295999932569, 1.1376282999990508]}, "bar": {"y": 1.1376282999990508, "times": [1.1376282999990508], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.1853557010081777, "max_f_0": 1.2611280755616734}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0777516999805812, 1.0874116999912076, 1.0974610999692231, 1.1080836999753956, 1.1195295999932569, 1.1376282999990508], "y": [1.2656566524349178, 1.1945324256461607, 1.170506796010258, 1.1512067157831347, 1.1337352587651623, 1.1016949941633962], "q1": [1.0777516999805812, 1.0874116999912076, 1.0974610999692231, 1.1080836999753956, 1.1195295999932569, 1.1376282999990508], "q9": [1.0777516999805812, 1.0874116999912076, 1.0974610999692231, 1.1080836999753956, 1.1195295999932569, 1.1376282999990508]}, "bar": {"y": 1.1376282999990508, "times": [1.1376282999990508], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.1016949940633962, "max_f_0": 1.1945324256461607}}}, "SLOPE[q=0.1,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.025612600002205, 1.0347493000153918, 1.0440018000081182, 1.0525947000132874, 1.0609205999935511, 1.0784641999925952], "y": [1.3178432449343171, 1.2614834568539752, 1.2408050544801221, 1.2247702156282492, 1.2106416108479325, 1.186372162711482], "q1": [1.025612600002205, 1.0347493000153918, 1.0440018000081182, 1.0525947000132874, 1.0609205999935511, 1.0784641999925952], "q9": [1.025612600002205, 1.0347493000153918, 1.0440018000081182, 1.0525947000132874, 1.0609205999935511, 1.0784641999925952]}, "bar": {"y": 1.0784641999925952, "times": [1.0784641999925952], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.186372162611482, "max_f_0": 1.2614834568539752}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.025612600002205, 1.0347493000153918, 1.0440018000081182, 1.0525947000132874, 1.0609205999935511, 1.0784641999925952], "y": [1.2656566524349178, 1.194919968581921, 1.1710405733131783, 1.1518815611546593, 1.134559491483943, 1.1028583237110532], "q1": [1.025612600002205, 1.0347493000153918, 1.0440018000081182, 1.0525947000132874, 1.0609205999935511, 1.0784641999925952], "q9": [1.025612600002205, 1.0347493000153918, 1.0440018000081182, 1.0525947000132874, 1.0609205999935511, 1.0784641999925952]}, "bar": {"y": 1.0784641999925952, "times": [1.0784641999925952], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.1028583236110532, "max_f_0": 1.194919968581921}}}, "SLOPE[q=0.05,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.056060000002617, 1.0654754000133835, 1.0753363000403624, 1.0847827000543475, 1.0950501000625081, 1.1154305000673048], "y": [1.3178432449343171, 1.2617764316068132, 1.241207794564088, 1.2252735034171094, 1.2112513886361325, 1.1872069852877951], "q1": [1.056060000002617, 1.0654754000133835, 1.0753363000403624, 1.0847827000543475, 1.0950501000625081, 1.1154305000673048], "q9": [1.056060000002617, 1.0654754000133835, 1.0753363000403624, 1.0847827000543475, 1.0950501000625081, 1.1154305000673048]}, "bar": {"y": 1.1154305000673048, "times": [1.1154305000673048], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.187206985187795, "max_f_0": 1.2617764316068132}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.056060000002617, 1.0654754000133835, 1.0753363000403624, 1.0847827000543475, 1.0950501000625081, 1.1154305000673048], "y": [1.2656566524349178, 1.1952395041207464, 1.1714801286883831, 1.152437219332407, 1.1352387303171718, 1.1038141216498794], "q1": [1.056060000002617, 1.0654754000133835, 1.0753363000403624, 1.0847827000543475, 1.0950501000625081, 1.1154305000673048], "q9": [1.056060000002617, 1.0654754000133835, 1.0753363000403624, 1.0847827000543475, 1.0950501000625081, 1.1154305000673048]}, "bar": {"y": 1.1154305000673048, "times": [1.1154305000673048], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.1038141215498793, "max_f_0": 1.1952395041207464}}}}, "breheny[dataset=bcTCGA,standardize=False]": {"SLOPE[q=0.2,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.9037476000085007, 0.911378800024977, 0.918630900036078, 0.9255929000210017, 0.932345900015207, 0.9472586000338197], "y": [1.3178432449343171, 1.253984167987115, 1.22754829581126, 1.2092245829327248, 1.1960686017523705, 1.177802424550717], "q1": [0.9037476000085007, 0.911378800024977, 0.918630900036078, 0.9255929000210017, 0.932345900015207, 0.9472586000338197], "q9": [0.9037476000085007, 0.911378800024977, 0.918630900036078, 0.9255929000210017, 0.932345900015207, 0.9472586000338197]}, "bar": {"y": 0.9472586000338197, "times": [0.9472586000338197], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.177802424450717, "max_f_0": 1.253984167987115}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.9037476000085007, 0.911378800024977, 0.918630900036078, 0.9255929000210017, 0.932345900015207, 0.9472586000338197], "y": [0.3294608112335794, 0.2491557401614759, 0.21376079445177165, 0.18822511391903052, 0.16966378855296615, 0.14453094755912033], "q1": [0.9037476000085007, 0.911378800024977, 0.918630900036078, 0.9255929000210017, 0.932345900015207, 0.9472586000338197], "q9": [0.9037476000085007, 0.911378800024977, 0.918630900036078, 0.9255929000210017, 0.932345900015207, 0.9472586000338197]}, "bar": {"y": 0.9472586000338197, "times": [0.9472586000338197], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.14453094745912032, "max_f_0": 0.2491557401614759}}}, "SLOPE[q=0.1,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.9793084000120871, 0.9869771999947261, 0.9953840999805834, 1.0024236000026576, 1.0105204000137746, 1.0255674000072759], "y": [1.3178432449343171, 1.260532136284464, 1.2346458036464227, 1.2160536140527507, 1.2023964910577907, 1.1834119718849845], "q1": [0.9793084000120871, 0.9869771999947261, 0.9953840999805834, 1.0024236000026576, 1.0105204000137746, 1.0255674000072759], "q9": [0.9793084000120871, 0.9869771999947261, 0.9953840999805834, 1.0024236000026576, 1.0105204000137746, 1.0255674000072759]}, "bar": {"y": 1.0255674000072759, "times": [1.0255674000072759], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.1834119717849845, "max_f_0": 1.260532136284464}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.9793084000120871, 0.9869771999947261, 0.9953840999805834, 1.0024236000026576, 1.0105204000137746, 1.0255674000072759], "y": [0.3294608112335794, 0.25755729197042365, 0.2231113881685598, 0.19738195952371917, 0.17820151758969893, 0.1518407321165025], "q1": [0.9793084000120871, 0.9869771999947261, 0.9953840999805834, 1.0024236000026576, 1.0105204000137746, 1.0255674000072759], "q9": [0.9793084000120871, 0.9869771999947261, 0.9953840999805834, 1.0024236000026576, 1.0105204000137746, 1.0255674000072759]}, "bar": {"y": 1.0255674000072759, "times": [1.0255674000072759], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.1518407320165025, "max_f_0": 0.25755729197042365}}}, "SLOPE[q=0.05,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0142586000147276, 1.0230057000007946, 1.0309426999883726, 1.038507799996296, 1.0456832999770995, 1.0617402999778278], "y": [1.3178432449343171, 1.2654860418484697, 1.240248240004625, 1.2215024748882133, 1.2075025889835347, 1.188082984275284], "q1": [1.0142586000147276, 1.0230057000007946, 1.0309426999883726, 1.038507799996296, 1.0456832999770995, 1.0617402999778278], "q9": [1.0142586000147276, 1.0230057000007946, 1.0309426999883726, 1.038507799996296, 1.0456832999770995, 1.0617402999778278]}, "bar": {"y": 1.0617402999778278, "times": [1.0617402999778278], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.188082984175284, "max_f_0": 1.2654860418484697}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0142586000147276, 1.0230057000007946, 1.0309426999883726, 1.038507799996296, 1.0456832999770995, 1.0617402999778278], "y": [0.3294608112335796, 0.26387029235377435, 0.2304681404677309, 0.20472800808493297, 0.18512528139360973, 0.15788851864290354], "q1": [1.0142586000147276, 1.0230057000007946, 1.0309426999883726, 1.038507799996296, 1.0456832999770995, 1.0617402999778278], "q9": [1.0142586000147276, 1.0230057000007946, 1.0309426999883726, 1.038507799996296, 1.0456832999770995, 1.0617402999778278]}, "bar": {"y": 1.0617402999778278, "times": [1.0617402999778278], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.15788851854290353, "max_f_0": 0.26387029235377435}}}, "SLOPE[q=0.2,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0160480000195093, 1.0260198000178207, 1.035570900014136, 1.0441107000224292, 1.0534935000177938, 1.0692077000276186], "y": [1.3178432449343171, 0.6546452587786271, 0.6242809288516753, 0.6007089423646386, 0.5831705603852803, 0.5597639655636086], "q1": [1.0160480000195093, 1.0260198000178207, 1.035570900014136, 1.0441107000224292, 1.0534935000177938, 1.0692077000276186], "q9": [1.0160480000195093, 1.0260198000178207, 1.035570900014136, 1.0441107000224292, 1.0534935000177938, 1.0692077000276186]}, "bar": {"y": 1.0692077000276186, "times": [1.0692077000276186], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.5597639654636086, "max_f_0": 0.6546452587786271}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0160480000195093, 1.0260198000178207, 1.035570900014136, 1.0441107000224292, 1.0534935000177938, 1.0692077000276186], "y": [1.0674530283967971, 0.2892722874899273, 0.2532419052424059, 0.22019350782599467, 0.1928966460251213, 0.15572691374007752], "q1": [1.0160480000195093, 1.0260198000178207, 1.035570900014136, 1.0441107000224292, 1.0534935000177938, 1.0692077000276186], "q9": [1.0160480000195093, 1.0260198000178207, 1.035570900014136, 1.0441107000224292, 1.0534935000177938, 1.0692077000276186]}, "bar": {"y": 1.0692077000276186, "times": [1.0692077000276186], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.1557269136400775, "max_f_0": 0.2892722874899273}}}, "SLOPE[q=0.1,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0402557000052184, 1.0485777000139933, 1.0572276000166312, 1.0674246000126004, 1.0754117000033148, 1.0911633000068832], "y": [1.3178432449343171, 0.6715525168628079, 0.6364732669913602, 0.6107020340712426, 0.5919731040672638, 0.567076425074297], "q1": [1.0402557000052184, 1.0485777000139933, 1.0572276000166312, 1.0674246000126004, 1.0754117000033148, 1.0911633000068832], "q9": [1.0402557000052184, 1.0485777000139933, 1.0572276000166312, 1.0674246000126004, 1.0754117000033148, 1.0911633000068832]}, "bar": {"y": 1.0911633000068832, "times": [1.0911633000068832], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.567076424974297, "max_f_0": 0.6715525168628079}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0402557000052184, 1.0485777000139933, 1.0572276000166312, 1.0674246000126004, 1.0754117000033148, 1.0911633000068832], "y": [1.0674530283967971, 0.3148564752537786, 0.27186885920942133, 0.23489519579453377, 0.2056713197086304, 0.16633173769047988], "q1": [1.0402557000052184, 1.0485777000139933, 1.0572276000166312, 1.0674246000126004, 1.0754117000033148, 1.0911633000068832], "q9": [1.0402557000052184, 1.0485777000139933, 1.0572276000166312, 1.0674246000126004, 1.0754117000033148, 1.0911633000068832]}, "bar": {"y": 1.0911633000068832, "times": [1.0911633000068832], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.16633173759047987, "max_f_0": 0.3148564752537786}}}, "SLOPE[q=0.05,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0228511999885086, 1.0328867999778595, 1.042797399975825, 1.0510517999937292, 1.059297100000549, 1.077248800022062], "y": [1.3178432449343171, 0.6846920022883255, 0.6462375152768756, 0.6188995699917961, 0.5993330865133385, 0.5731803103628677], "q1": [1.0228511999885086, 1.0328867999778595, 1.042797399975825, 1.0510517999937292, 1.059297100000549, 1.077248800022062], "q9": [1.0228511999885086, 1.0328867999778595, 1.042797399975825, 1.0510517999937292, 1.059297100000549, 1.077248800022062]}, "bar": {"y": 1.077248800022062, "times": [1.077248800022062], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.5731803102628676, "max_f_0": 0.6846920022883255}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0228511999885086, 1.0328867999778595, 1.042797399975825, 1.0510517999937292, 1.059297100000549, 1.077248800022062], "y": [1.0674530283967971, 0.3344255994286311, 0.2863703761642836, 0.24675374929700788, 0.21616403987125105, 0.17491020249307432], "q1": [1.0228511999885086, 1.0328867999778595, 1.042797399975825, 1.0510517999937292, 1.059297100000549, 1.077248800022062], "q9": [1.0228511999885086, 1.0328867999778595, 1.042797399975825, 1.0510517999937292, 1.059297100000549, 1.077248800022062]}, "bar": {"y": 1.077248800022062, "times": [1.077248800022062], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.1749102023930743, "max_f_0": 0.3344255994286311}}}, "SLOPE[q=0.2,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0143691999837756, 1.022944299998926, 1.0311424000246916, 1.0396339000144508, 1.0482547000283375, 1.065104400011478], "y": [1.3178432449343171, 0.34383317135819724, 0.33827566529503195, 0.3323330263979424, 0.3265017843801244, 0.31637800882365763], "q1": [1.0143691999837756, 1.022944299998926, 1.0311424000246916, 1.0396339000144508, 1.0482547000283375, 1.065104400011478], "q9": [1.0143691999837756, 1.022944299998926, 1.0311424000246916, 1.0396339000144508, 1.0482547000283375, 1.065104400011478]}, "bar": {"y": 1.065104400011478, "times": [1.065104400011478], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.3163780087236576, "max_f_0": 0.34383317135819724}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0143691999837756, 1.022944299998926, 1.0311424000246916, 1.0396339000144508, 1.0482547000283375, 1.065104400011478], "y": [1.2656566524349178, 0.16084763371423375, 0.15177267585703066, 0.14262467191047237, 0.13265830644231807, 0.11183606358529788], "q1": [1.0143691999837756, 1.022944299998926, 1.0311424000246916, 1.0396339000144508, 1.0482547000283375, 1.065104400011478], "q9": [1.0143691999837756, 1.022944299998926, 1.0311424000246916, 1.0396339000144508, 1.0482547000283375, 1.065104400011478]}, "bar": {"y": 1.065104400011478, "times": [1.065104400011478], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.11183606348529788, "max_f_0": 0.16084763371423375}}}, "SLOPE[q=0.1,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.017466899997089, 1.0265862999949604, 1.035825200000545, 1.0441844000015408, 1.0526233999989927, 1.0699375999975018], "y": [1.3178432449343171, 0.3511536789213655, 0.34479672852296406, 0.3380867690928929, 0.33160236230507456, 0.320571160811032], "q1": [1.017466899997089, 1.0265862999949604, 1.035825200000545, 1.0441844000015408, 1.0526233999989927, 1.0699375999975018], "q9": [1.017466899997089, 1.0265862999949604, 1.035825200000545, 1.0441844000015408, 1.0526233999989927, 1.0699375999975018]}, "bar": {"y": 1.0699375999975018, "times": [1.0699375999975018], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.320571160711032, "max_f_0": 0.3511536789213655}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.017466899997089, 1.0265862999949604, 1.035825200000545, 1.0441844000015408, 1.0526233999989927, 1.0699375999975018], "y": [1.2656566524349178, 0.17141246788806636, 0.16278258933028353, 0.1527879668462625, 0.1424147073897427, 0.12110234375046075], "q1": [1.017466899997089, 1.0265862999949604, 1.035825200000545, 1.0441844000015408, 1.0526233999989927, 1.0699375999975018], "q9": [1.017466899997089, 1.0265862999949604, 1.035825200000545, 1.0441844000015408, 1.0526233999989927, 1.0699375999975018]}, "bar": {"y": 1.0699375999975018, "times": [1.0699375999975018], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.12110234365046076, "max_f_0": 0.17141246788806636}}}, "SLOPE[q=0.05,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0462148999795318, 1.054841299977852, 1.0639568999758922, 1.0731615999829955, 1.0833062999881804, 1.1010150999645703], "y": [1.3178432449343171, 0.357133538411472, 0.3500586554287436, 0.3426787667371371, 0.33565203566026397, 0.3238940584284416], "q1": [1.0462148999795318, 1.054841299977852, 1.0639568999758922, 1.0731615999829955, 1.0833062999881804, 1.1010150999645703], "q9": [1.0462148999795318, 1.054841299977852, 1.0639568999758922, 1.0731615999829955, 1.0833062999881804, 1.1010150999645703]}, "bar": {"y": 1.1010150999645703, "times": [1.1010150999645703], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.3238940583284416, "max_f_0": 0.357133538411472}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [1.0462148999795318, 1.054841299977852, 1.0639568999758922, 1.0731615999829955, 1.0833062999881804, 1.1010150999645703], "y": [1.2656566524349178, 0.1808654950174296, 0.17168075703814398, 0.16205010631059188, 0.15129386172428003, 0.12831741484354817], "q1": [1.0462148999795318, 1.054841299977852, 1.0639568999758922, 1.0731615999829955, 1.0833062999881804, 1.1010150999645703], "q9": [1.0462148999795318, 1.054841299977852, 1.0639568999758922, 1.0731615999829955, 1.0833062999881804, 1.1010150999645703]}, "bar": {"y": 1.1010150999645703, "times": [1.1010150999645703], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.12831741474354816, "max_f_0": 0.1808654950174296}}}}, "breheny[dataset=Rhee2006,standardize=True]": {"SLOPE[q=0.2,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0014618999848607928, 0.003620699979364872, 0.005646100005833432, 0.00781989999813959, 0.009813299984671175, 0.017273100005695596], "y": [3.763112848392333, 3.4532265981222676, 3.3634704780597744, 3.317957010453724, 3.2958261770331, 3.2720284095835406], "q1": [0.0014618999848607928, 0.003620699979364872, 0.005646100005833432, 0.00781989999813959, 0.009813299984671175, 0.017273100005695596], "q9": [0.0014618999848607928, 0.003620699979364872, 0.005646100005833432, 0.00781989999813959, 0.009813299984671175, 0.017273100005695596]}, "bar": {"y": 0.017273100005695596, "times": [0.017273100005695596], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 3.2720284094835406, "max_f_0": 3.4532265981222676}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0014618999848607928, 0.003620699979364872, 0.005646100005833432, 0.00781989999813959, 0.009813299984671175, 0.017273100005695596], "y": [0.9407782120980857, 0.4484734597697537, 0.2659426375003564, 0.14509758783754645, 0.07647740541617987, 0.015398723826197003], "q1": [0.0014618999848607928, 0.003620699979364872, 0.005646100005833432, 0.00781989999813959, 0.009813299984671175, 0.017273100005695596], "q9": [0.0014618999848607928, 0.003620699979364872, 0.005646100005833432, 0.00781989999813959, 0.009813299984671175, 0.017273100005695596]}, "bar": {"y": 0.017273100005695596, "times": [0.017273100005695596], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.015398723726197003, "max_f_0": 0.4484734597697537}}}, "SLOPE[q=0.1,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0015373000060208142, 0.003796800010604784, 0.005928700004005805, 0.008112600015010685, 0.010337500018067658, 0.015004800050519407], "y": [3.763112848392333, 3.4547775329855326, 3.3639540451959444, 3.319179177149164, 3.2959972495878302, 3.272700637155031], "q1": [0.0015373000060208142, 0.003796800010604784, 0.005928700004005805, 0.008112600015010685, 0.010337500018067658, 0.015004800050519407], "q9": [0.0015373000060208142, 0.003796800010604784, 0.005928700004005805, 0.008112600015010685, 0.010337500018067658, 0.015004800050519407]}, "bar": {"y": 0.015004800050519407, "times": [0.015004800050519407], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 3.272700637055031, "max_f_0": 3.4547775329855326}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0015373000060208142, 0.003796800010604784, 0.005928700004005805, 0.008112600015010685, 0.010337500018067658, 0.015004800050519407], "y": [0.9407782120980857, 0.453194687683073, 0.26622402898834574, 0.14477887666182543, 0.07579919072868391, 0.014303872527687833], "q1": [0.0015373000060208142, 0.003796800010604784, 0.005928700004005805, 0.008112600015010685, 0.010337500018067658, 0.015004800050519407], "q9": [0.0015373000060208142, 0.003796800010604784, 0.005928700004005805, 0.008112600015010685, 0.010337500018067658, 0.015004800050519407]}, "bar": {"y": 0.015004800050519407, "times": [0.015004800050519407], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.014303872427687834, "max_f_0": 0.453194687683073}}}, "SLOPE[q=0.05,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0016228000167757273, 0.009282700018957257, 0.011714899999788031, 0.014040400012163445, 0.016564000019570813, 0.026255100005073473], "y": [3.763112848392333, 3.4563677646519833, 3.3642368152390296, 3.3200612674552406, 3.295919748555262, 3.273270089240744], "q1": [0.0016228000167757273, 0.009282700018957257, 0.011714899999788031, 0.014040400012163445, 0.016564000019570813, 0.026255100005073473], "q9": [0.0016228000167757273, 0.009282700018957257, 0.011714899999788031, 0.014040400012163445, 0.016564000019570813, 0.026255100005073473]}, "bar": {"y": 0.026255100005073473, "times": [0.026255100005073473], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 3.273270089140744, "max_f_0": 3.4563677646519833}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0016228000167757273, 0.009282700018957257, 0.011714899999788031, 0.014040400012163445, 0.016564000019570813, 0.026255100005073473], "y": [0.9407782120980857, 0.456773299200921, 0.2666784583609605, 0.14453757602109407, 0.07508020417707195, 0.01353336216097567], "q1": [0.0016228000167757273, 0.009282700018957257, 0.011714899999788031, 0.014040400012163445, 0.016564000019570813, 0.026255100005073473], "q9": [0.0016228000167757273, 0.009282700018957257, 0.011714899999788031, 0.014040400012163445, 0.016564000019570813, 0.026255100005073473]}, "bar": {"y": 0.026255100005073473, "times": [0.026255100005073473], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.01353336206097567, "max_f_0": 0.456773299200921}}}, "SLOPE[q=0.2,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.002071599999908358, 0.0053050999995321035, 0.008305099996505305, 0.017431800020858645, 0.02058680000482127, 0.02644800001871772], "y": [3.763112848392333, 1.845029510817528, 1.7726026679266749, 1.7204819949736803, 1.6806136242019074, 1.642404001401825], "q1": [0.002071599999908358, 0.0053050999995321035, 0.008305099996505305, 0.017431800020858645, 0.02058680000482127, 0.02644800001871772], "q9": [0.002071599999908358, 0.0053050999995321035, 0.008305099996505305, 0.017431800020858645, 0.02058680000482127, 0.02644800001871772]}, "bar": {"y": 0.02644800001871772, "times": [0.02644800001871772], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.642404001301825, "max_f_0": 1.845029510817528}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.002071599999908358, 0.0053050999995321035, 0.008305099996505305, 0.017431800020858645, 0.02058680000482127, 0.02644800001871772], "y": [3.04812140719779, 0.5841145690432794, 0.4652397982609193, 0.3674210048088171, 0.2802690413945357, 0.1402665288119198], "q1": [0.002071599999908358, 0.0053050999995321035, 0.008305099996505305, 0.017431800020858645, 0.02058680000482127, 0.02644800001871772], "q9": [0.002071599999908358, 0.0053050999995321035, 0.008305099996505305, 0.017431800020858645, 0.02058680000482127, 0.02644800001871772]}, "bar": {"y": 0.02644800001871772, "times": [0.02644800001871772], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.1402665287119198, "max_f_0": 0.5841145690432794}}}, "SLOPE[q=0.1,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0018768000009004027, 0.005123599985381588, 0.0131579999870155, 0.01592419997905381, 0.01911559997824952, 0.02472199997282587], "y": [3.763112848392333, 1.8569925035142516, 1.7830589543791195, 1.7293689876134408, 1.6892909292107912, 1.6510602189861832], "q1": [0.0018768000009004027, 0.005123599985381588, 0.0131579999870155, 0.01592419997905381, 0.01911559997824952, 0.02472199997282587], "q9": [0.0018768000009004027, 0.005123599985381588, 0.0131579999870155, 0.01592419997905381, 0.01911559997824952, 0.02472199997282587]}, "bar": {"y": 0.02472199997282587, "times": [0.02472199997282587], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.6510602188861832, "max_f_0": 1.8569925035142516}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0018768000009004027, 0.005123599985381588, 0.0131579999870155, 0.01592419997905381, 0.01911559997824952, 0.02472199997282587], "y": [3.04812140719779, 0.5974486098358576, 0.4760633412502484, 0.3767162708424465, 0.28748060299927714, 0.14651780028891848], "q1": [0.0018768000009004027, 0.005123599985381588, 0.0131579999870155, 0.01592419997905381, 0.01911559997824952, 0.02472199997282587], "q9": [0.0018768000009004027, 0.005123599985381588, 0.0131579999870155, 0.01592419997905381, 0.01911559997824952, 0.02472199997282587]}, "bar": {"y": 0.02472199997282587, "times": [0.02472199997282587], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.14651780018891847, "max_f_0": 0.5974486098358576}}}, "SLOPE[q=0.05,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.002525999996578321, 0.005287199979647994, 0.007916599977761507, 0.01066159998299554, 0.013371999986702576, 0.018646299955435097], "y": [3.763112848392333, 1.866483800151984, 1.7916995476158466, 1.736460868757669, 1.6962962733315328, 1.6579515882472358], "q1": [0.002525999996578321, 0.005287199979647994, 0.007916599977761507, 0.01066159998299554, 0.013371999986702576, 0.018646299955435097], "q9": [0.002525999996578321, 0.005287199979647994, 0.007916599977761507, 0.01066159998299554, 0.013371999986702576, 0.018646299955435097]}, "bar": {"y": 0.018646299955435097, "times": [0.018646299955435097], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.6579515881472358, "max_f_0": 1.866483800151984}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.002525999996578321, 0.005287199979647994, 0.007916599977761507, 0.01066159998299554, 0.013371999986702576, 0.018646299955435097], "y": [3.04812140719779, 0.6080567066087672, 0.48518275904676655, 0.3842126116539537, 0.29337947956065147, 0.15193636324043913], "q1": [0.002525999996578321, 0.005287199979647994, 0.007916599977761507, 0.01066159998299554, 0.013371999986702576, 0.018646299955435097], "q9": [0.002525999996578321, 0.005287199979647994, 0.007916599977761507, 0.01066159998299554, 0.013371999986702576, 0.018646299955435097]}, "bar": {"y": 0.018646299955435097, "times": [0.018646299955435097], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.15193636314043912, "max_f_0": 0.6080567066087672}}}, "SLOPE[q=0.2,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0016948000120464712, 0.004718100011814386, 0.008134500007145107, 0.011020800011465326, 0.01890230001299642, 0.02455289999488741], "y": [3.763112848392333, 1.140045878331615, 1.0691344241125018, 1.0082139891983701, 0.9554058830223411, 0.8808581839441687], "q1": [0.0016948000120464712, 0.004718100011814386, 0.008134500007145107, 0.011020800011465326, 0.01890230001299642, 0.02455289999488741], "q9": [0.0016948000120464712, 0.004718100011814386, 0.008134500007145107, 0.011020800011465326, 0.01890230001299642, 0.02455289999488741]}, "bar": {"y": 0.02455289999488741, "times": [0.02455289999488741], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.8808581838441687, "max_f_0": 1.140045878331615}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0016948000120464712, 0.004718100011814386, 0.008134500007145107, 0.011020800011465326, 0.01890230001299642, 0.02455289999488741], "y": [3.6140935795959965, 0.7704623416780803, 0.6863449833824693, 0.6162324637422889, 0.5554820337742017, 0.4575570968047853], "q1": [0.0016948000120464712, 0.004718100011814386, 0.008134500007145107, 0.011020800011465326, 0.01890230001299642, 0.02455289999488741], "q9": [0.0016948000120464712, 0.004718100011814386, 0.008134500007145107, 0.011020800011465326, 0.01890230001299642, 0.02455289999488741]}, "bar": {"y": 0.02455289999488741, "times": [0.02455289999488741], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.4575570967047853, "max_f_0": 0.7704623416780803}}}, "SLOPE[q=0.1,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.002433000016026199, 0.005487299989908934, 0.008441200014203787, 0.016646200034301728, 0.019568600022466853, 0.030130800034385175], "y": [3.763112848392333, 1.1448865588498323, 1.0737496056654363, 1.0130008432897708, 0.9601070617406703, 0.8858488329153199], "q1": [0.002433000016026199, 0.005487299989908934, 0.008441200014203787, 0.016646200034301728, 0.019568600022466853, 0.030130800034385175], "q9": [0.002433000016026199, 0.005487299989908934, 0.008441200014203787, 0.016646200034301728, 0.019568600022466853, 0.030130800034385175]}, "bar": {"y": 0.030130800034385175, "times": [0.030130800034385175], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.8858488328153199, "max_f_0": 1.1448865588498323}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.002433000016026199, 0.005487299989908934, 0.008441200014203787, 0.016646200034301728, 0.019568600022466853, 0.030130800034385175], "y": [3.6140935795959965, 0.7757384461808725, 0.6900284485313126, 0.620399699687348, 0.5594127810042775, 0.46225053684971434], "q1": [0.002433000016026199, 0.005487299989908934, 0.008441200014203787, 0.016646200034301728, 0.019568600022466853, 0.030130800034385175], "q9": [0.002433000016026199, 0.005487299989908934, 0.008441200014203787, 0.016646200034301728, 0.019568600022466853, 0.030130800034385175]}, "bar": {"y": 0.030130800034385175, "times": [0.030130800034385175], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.46225053674971434, "max_f_0": 0.7757384461808725}}}, "SLOPE[q=0.05,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0017198999994434416, 0.004888499999651685, 0.00788809999357909, 0.01135359998443164, 0.015609800000675023, 0.02787199997692369], "y": [3.763112848392333, 1.1487448690162636, 1.0774680229571865, 1.016865888324595, 0.9638603523700507, 0.8898054234075907], "q1": [0.0017198999994434416, 0.004888499999651685, 0.00788809999357909, 0.01135359998443164, 0.015609800000675023, 0.02787199997692369], "q9": [0.0017198999994434416, 0.004888499999651685, 0.00788809999357909, 0.01135359998443164, 0.015609800000675023, 0.02787199997692369]}, "bar": {"y": 0.02787199997692369, "times": [0.02787199997692369], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.8898054233075907, "max_f_0": 1.1487448690162636}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0017198999994434416, 0.004888499999651685, 0.00788809999357909, 0.01135359998443164, 0.015609800000675023, 0.02787199997692369], "y": [3.6140935795959965, 0.780381835968539, 0.6929762297393073, 0.6237604482095763, 0.56256922512984, 0.46588389885475195], "q1": [0.0017198999994434416, 0.004888499999651685, 0.00788809999357909, 0.01135359998443164, 0.015609800000675023, 0.02787199997692369], "q9": [0.0017198999994434416, 0.004888499999651685, 0.00788809999357909, 0.01135359998443164, 0.015609800000675023, 0.02787199997692369]}, "bar": {"y": 0.02787199997692369, "times": [0.02787199997692369], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.46588389875475195, "max_f_0": 0.780381835968539}}}}, "breheny[dataset=Rhee2006,standardize=False]": {"SLOPE[q=0.2,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.002497300010873005, 0.00571600001421757, 0.008736000017961487, 0.01823250000597909, 0.023106200009351596, 0.036220200010575354], "y": [3.763112848392333, 3.4532265981222676, 3.3634704780597744, 3.317957010453724, 3.2958261770331, 3.2720284095835406], "q1": [0.002497300010873005, 0.00571600001421757, 0.008736000017961487, 0.01823250000597909, 0.023106200009351596, 0.036220200010575354], "q9": [0.002497300010873005, 0.00571600001421757, 0.008736000017961487, 0.01823250000597909, 0.023106200009351596, 0.036220200010575354]}, "bar": {"y": 0.036220200010575354, "times": [0.036220200010575354], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 3.2720284094835406, "max_f_0": 3.4532265981222676}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.002497300010873005, 0.00571600001421757, 0.008736000017961487, 0.01823250000597909, 0.023106200009351596, 0.036220200010575354], "y": [0.9407782120980857, 0.4484734597697537, 0.2659426375003564, 0.14509758783754645, 0.07647740541617987, 0.015398723826197003], "q1": [0.002497300010873005, 0.00571600001421757, 0.008736000017961487, 0.01823250000597909, 0.023106200009351596, 0.036220200010575354], "q9": [0.002497300010873005, 0.00571600001421757, 0.008736000017961487, 0.01823250000597909, 0.023106200009351596, 0.036220200010575354]}, "bar": {"y": 0.036220200010575354, "times": [0.036220200010575354], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.015398723726197003, "max_f_0": 0.4484734597697537}}}, "SLOPE[q=0.1,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0028316999960225075, 0.006692800001474097, 0.01099789998261258, 0.01452109997626394, 0.024199499981477857, 0.030139899987261742], "y": [3.763112848392333, 3.4547775329855326, 3.3639540451959444, 3.319179177149164, 3.2959972495878302, 3.272700637155031], "q1": [0.0028316999960225075, 0.006692800001474097, 0.01099789998261258, 0.01452109997626394, 0.024199499981477857, 0.030139899987261742], "q9": [0.0028316999960225075, 0.006692800001474097, 0.01099789998261258, 0.01452109997626394, 0.024199499981477857, 0.030139899987261742]}, "bar": {"y": 0.030139899987261742, "times": [0.030139899987261742], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 3.272700637055031, "max_f_0": 3.4547775329855326}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0028316999960225075, 0.006692800001474097, 0.01099789998261258, 0.01452109997626394, 0.024199499981477857, 0.030139899987261742], "y": [0.9407782120980857, 0.453194687683073, 0.26622402898834574, 0.14477887666182543, 0.07579919072868391, 0.014303872527687833], "q1": [0.0028316999960225075, 0.006692800001474097, 0.01099789998261258, 0.01452109997626394, 0.024199499981477857, 0.030139899987261742], "q9": [0.0028316999960225075, 0.006692800001474097, 0.01099789998261258, 0.01452109997626394, 0.024199499981477857, 0.030139899987261742]}, "bar": {"y": 0.030139899987261742, "times": [0.030139899987261742], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.014303872427687834, "max_f_0": 0.453194687683073}}}, "SLOPE[q=0.05,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0019508999830577523, 0.005119999987073243, 0.007982299983268604, 0.016775500000221655, 0.02158699999563396, 0.033844799996586516], "y": [3.763112848392333, 3.4563677646519837, 3.3642368152390296, 3.320061267455241, 3.295919748555262, 3.2732700892407443], "q1": [0.0019508999830577523, 0.005119999987073243, 0.007982299983268604, 0.016775500000221655, 0.02158699999563396, 0.033844799996586516], "q9": [0.0019508999830577523, 0.005119999987073243, 0.007982299983268604, 0.016775500000221655, 0.02158699999563396, 0.033844799996586516]}, "bar": {"y": 0.033844799996586516, "times": [0.033844799996586516], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 3.2732700891407442, "max_f_0": 3.4563677646519837}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0019508999830577523, 0.005119999987073243, 0.007982299983268604, 0.016775500000221655, 0.02158699999563396, 0.033844799996586516], "y": [0.9407782120980857, 0.45677329920092147, 0.2666784583609605, 0.14453757602109452, 0.07508020417707195, 0.013533362160976115], "q1": [0.0019508999830577523, 0.005119999987073243, 0.007982299983268604, 0.016775500000221655, 0.02158699999563396, 0.033844799996586516], "q9": [0.0019508999830577523, 0.005119999987073243, 0.007982299983268604, 0.016775500000221655, 0.02158699999563396, 0.033844799996586516]}, "bar": {"y": 0.033844799996586516, "times": [0.033844799996586516], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.013533362060976115, "max_f_0": 0.45677329920092147}}}, "SLOPE[q=0.2,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.001953200000571087, 0.005099499976495281, 0.00833109996165149, 0.013354199938476086, 0.02127869991818443, 0.02722429990535602], "y": [3.763112848392333, 1.845029510817528, 1.7726026679266749, 1.7204819949736803, 1.6806136242019074, 1.642404001401825], "q1": [0.001953200000571087, 0.005099499976495281, 0.00833109996165149, 0.013354199938476086, 0.02127869991818443, 0.02722429990535602], "q9": [0.001953200000571087, 0.005099499976495281, 0.00833109996165149, 0.013354199938476086, 0.02127869991818443, 0.02722429990535602]}, "bar": {"y": 0.02722429990535602, "times": [0.02722429990535602], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.642404001301825, "max_f_0": 1.845029510817528}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.001953200000571087, 0.005099499976495281, 0.00833109996165149, 0.013354199938476086, 0.02127869991818443, 0.02722429990535602], "y": [3.04812140719779, 0.5841145690432794, 0.4652397982609193, 0.3674210048088171, 0.2802690413945357, 0.1402665288119198], "q1": [0.001953200000571087, 0.005099499976495281, 0.00833109996165149, 0.013354199938476086, 0.02127869991818443, 0.02722429990535602], "q9": [0.001953200000571087, 0.005099499976495281, 0.00833109996165149, 0.013354199938476086, 0.02127869991818443, 0.02722429990535602]}, "bar": {"y": 0.02722429990535602, "times": [0.02722429990535602], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.1402665287119198, "max_f_0": 0.5841145690432794}}}, "SLOPE[q=0.1,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.002501900016795844, 0.005580900033237413, 0.00851500005228445, 0.01143370004137978, 0.019642000028397888, 0.02529379999032244], "y": [3.763112848392333, 1.8569925035142518, 1.7830589543791195, 1.7293689876134408, 1.6892909292107912, 1.6510602189861832], "q1": [0.002501900016795844, 0.005580900033237413, 0.00851500005228445, 0.01143370004137978, 0.019642000028397888, 0.02529379999032244], "q9": [0.002501900016795844, 0.005580900033237413, 0.00851500005228445, 0.01143370004137978, 0.019642000028397888, 0.02529379999032244]}, "bar": {"y": 0.02529379999032244, "times": [0.02529379999032244], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.6510602188861832, "max_f_0": 1.8569925035142518}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.002501900016795844, 0.005580900033237413, 0.00851500005228445, 0.01143370004137978, 0.019642000028397888, 0.02529379999032244], "y": [3.04812140719779, 0.5974486098358578, 0.4760633412502484, 0.3767162708424465, 0.28748060299927714, 0.14651780028891848], "q1": [0.002501900016795844, 0.005580900033237413, 0.00851500005228445, 0.01143370004137978, 0.019642000028397888, 0.02529379999032244], "q9": [0.002501900016795844, 0.005580900033237413, 0.00851500005228445, 0.01143370004137978, 0.019642000028397888, 0.02529379999032244]}, "bar": {"y": 0.02529379999032244, "times": [0.02529379999032244], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.14651780018891847, "max_f_0": 0.5974486098358578}}}, "SLOPE[q=0.05,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0024114999978337437, 0.0060618999996222556, 0.009013200004119426, 0.017299700004514307, 0.02016449999064207, 0.03288089999114163], "y": [3.763112848392333, 1.866483800151984, 1.7916995476158466, 1.736460868757669, 1.6962962733315328, 1.6579515882472358], "q1": [0.0024114999978337437, 0.0060618999996222556, 0.009013200004119426, 0.017299700004514307, 0.02016449999064207, 0.03288089999114163], "q9": [0.0024114999978337437, 0.0060618999996222556, 0.009013200004119426, 0.017299700004514307, 0.02016449999064207, 0.03288089999114163]}, "bar": {"y": 0.03288089999114163, "times": [0.03288089999114163], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.6579515881472358, "max_f_0": 1.866483800151984}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0024114999978337437, 0.0060618999996222556, 0.009013200004119426, 0.017299700004514307, 0.02016449999064207, 0.03288089999114163], "y": [3.04812140719779, 0.6080567066087672, 0.48518275904676655, 0.3842126116539537, 0.29337947956065147, 0.15193636324043913], "q1": [0.0024114999978337437, 0.0060618999996222556, 0.009013200004119426, 0.017299700004514307, 0.02016449999064207, 0.03288089999114163], "q9": [0.0024114999978337437, 0.0060618999996222556, 0.009013200004119426, 0.017299700004514307, 0.02016449999064207, 0.03288089999114163]}, "bar": {"y": 0.03288089999114163, "times": [0.03288089999114163], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.15193636314043912, "max_f_0": 0.6080567066087672}}}, "SLOPE[q=0.2,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.001830199995310977, 0.0052241999947000295, 0.009260399994673207, 0.015977299975929782, 0.01880889997119084, 0.029990799957886338], "y": [3.763112848392333, 1.140045878331615, 1.0691344241125016, 1.0082139891983701, 0.9554058830223411, 0.8808581839441685], "q1": [0.001830199995310977, 0.0052241999947000295, 0.009260399994673207, 0.015977299975929782, 0.01880889997119084, 0.029990799957886338], "q9": [0.001830199995310977, 0.0052241999947000295, 0.009260399994673207, 0.015977299975929782, 0.01880889997119084, 0.029990799957886338]}, "bar": {"y": 0.029990799957886338, "times": [0.029990799957886338], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.8808581838441685, "max_f_0": 1.140045878331615}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.001830199995310977, 0.0052241999947000295, 0.009260399994673207, 0.015977299975929782, 0.01880889997119084, 0.029990799957886338], "y": [3.6140935795959965, 0.7704623416780803, 0.6863449833824674, 0.6162324637422889, 0.5554820337742017, 0.45755709680478507], "q1": [0.001830199995310977, 0.0052241999947000295, 0.009260399994673207, 0.015977299975929782, 0.01880889997119084, 0.029990799957886338], "q9": [0.001830199995310977, 0.0052241999947000295, 0.009260399994673207, 0.015977299975929782, 0.01880889997119084, 0.029990799957886338]}, "bar": {"y": 0.029990799957886338, "times": [0.029990799957886338], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.45755709670478506, "max_f_0": 0.7704623416780803}}}, "SLOPE[q=0.1,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0023259999870788306, 0.00622569999541156, 0.009510100004263222, 0.012920000008307397, 0.020499200007179752, 0.026455899991560727], "y": [3.763112848392333, 1.144886558849832, 1.073749605665436, 1.0130008432897708, 0.9601070617406703, 0.88584883291532], "q1": [0.0023259999870788306, 0.00622569999541156, 0.009510100004263222, 0.012920000008307397, 0.020499200007179752, 0.026455899991560727], "q9": [0.0023259999870788306, 0.00622569999541156, 0.009510100004263222, 0.012920000008307397, 0.020499200007179752, 0.026455899991560727]}, "bar": {"y": 0.026455899991560727, "times": [0.026455899991560727], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.88584883281532, "max_f_0": 1.144886558849832}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0023259999870788306, 0.00622569999541156, 0.009510100004263222, 0.012920000008307397, 0.020499200007179752, 0.026455899991560727], "y": [3.6140935795959965, 0.7757384461808723, 0.6900284485313124, 0.620399699687348, 0.5594127810042775, 0.46225053684971446], "q1": [0.0023259999870788306, 0.00622569999541156, 0.009510100004263222, 0.012920000008307397, 0.020499200007179752, 0.026455899991560727], "q9": [0.0023259999870788306, 0.00622569999541156, 0.009510100004263222, 0.012920000008307397, 0.020499200007179752, 0.026455899991560727]}, "bar": {"y": 0.026455899991560727, "times": [0.026455899991560727], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.46225053674971445, "max_f_0": 0.7757384461808723}}}, "SLOPE[q=0.05,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0022877000155858696, 0.005985000025248155, 0.008957400044891983, 0.012335500039625913, 0.015433300024596974, 0.02835350000532344], "y": [3.763112848392333, 1.1487448690162636, 1.0774680229571865, 1.016865888324595, 0.9638603523700509, 0.8898054234075907], "q1": [0.0022877000155858696, 0.005985000025248155, 0.008957400044891983, 0.012335500039625913, 0.015433300024596974, 0.02835350000532344], "q9": [0.0022877000155858696, 0.005985000025248155, 0.008957400044891983, 0.012335500039625913, 0.015433300024596974, 0.02835350000532344]}, "bar": {"y": 0.02835350000532344, "times": [0.02835350000532344], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.8898054233075907, "max_f_0": 1.1487448690162636}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.0022877000155858696, 0.005985000025248155, 0.008957400044891983, 0.012335500039625913, 0.015433300024596974, 0.02835350000532344], "y": [3.6140935795959965, 0.780381835968539, 0.6929762297393073, 0.6237604482095763, 0.56256922512984, 0.46588389885475195], "q1": [0.0022877000155858696, 0.005985000025248155, 0.008957400044891983, 0.012335500039625913, 0.015433300024596974, 0.02835350000532344], "q9": [0.0022877000155858696, 0.005985000025248155, 0.008957400044891983, 0.012335500039625913, 0.015433300024596974, 0.02835350000532344]}, "bar": {"y": 0.02835350000532344, "times": [0.02835350000532344], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.46588389875475195, "max_f_0": 0.780381835968539}}}}, "breheny[dataset=Scheetz2006,standardize=True]": {"SLOPE[q=0.2,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1665060999803245, 0.17325009996420704, 0.17935709995799698, 0.18524639995303005, 0.19113359993207268, 0.2027515999507159], "y": [35.21362109583333, 35.212194579179275, 35.21209514713646, 35.21203734518071, 35.212001705322926, 35.21196429978563], "q1": [0.1665060999803245, 0.17325009996420704, 0.17935709995799698, 0.18524639995303005, 0.19113359993207268, 0.2027515999507159], "q9": [0.1665060999803245, 0.17325009996420704, 0.17935709995799698, 0.18524639995303005, 0.19113359993207268, 0.2027515999507159]}, "bar": {"y": 0.2027515999507159, "times": [0.2027515999507159], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 35.211964299685626, "max_f_0": 35.212194579179275}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1665060999803245, 0.17325009996420704, 0.17935709995799698, 0.18524639995303005, 0.19113359993207268, 0.2027515999507159], "y": [8.80340527395835, 0.7858209957034106, 0.3744925174392648, 0.17971628214131385, 0.0852996833128401, 0.01841726178679437], "q1": [0.1665060999803245, 0.17325009996420704, 0.17935709995799698, 0.18524639995303005, 0.19113359993207268, 0.2027515999507159], "q9": [0.1665060999803245, 0.17325009996420704, 0.17935709995799698, 0.18524639995303005, 0.19113359993207268, 0.2027515999507159]}, "bar": {"y": 0.2027515999507159, "times": [0.2027515999507159], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.01841726168679437, "max_f_0": 0.7858209957034106}}}, "SLOPE[q=0.1,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.15430440002819523, 0.16060320002725348, 0.16693340003257617, 0.17303490004269406, 0.1794112000206951, 0.19287210004404187], "y": [35.21362109583333, 35.21223443255554, 35.21211794725936, 35.21204773946275, 35.2120031974092, 35.211953937388266], "q1": [0.15430440002819523, 0.16060320002725348, 0.16693340003257617, 0.17303490004269406, 0.1794112000206951, 0.19287210004404187], "q9": [0.15430440002819523, 0.16060320002725348, 0.16693340003257617, 0.17303490004269406, 0.1794112000206951, 0.19287210004404187]}, "bar": {"y": 0.19287210004404187, "times": [0.19287210004404187], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 35.211953937288264, "max_f_0": 35.21223443255554}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.15430440002819523, 0.16060320002725348, 0.16693340003257617, 0.17303490004269406, 0.1794112000206951, 0.19287210004404187], "y": [8.803405273958283, 1.070737158939778, 0.5581272618184983, 0.2912386261084947, 0.15152414239581447, 0.04352993678406847], "q1": [0.15430440002819523, 0.16060320002725348, 0.16693340003257617, 0.17303490004269406, 0.1794112000206951, 0.19287210004404187], "q9": [0.15430440002819523, 0.16060320002725348, 0.16693340003257617, 0.17303490004269406, 0.1794112000206951, 0.19287210004404187]}, "bar": {"y": 0.19287210004404187, "times": [0.19287210004404187], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.04352993668406847, "max_f_0": 1.070737158939778}}}, "SLOPE[q=0.05,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.2058217000158038, 0.21301360003417358, 0.22004690003814176, 0.228331700025592, 0.2370742000057362, 0.251103399990825], "y": [35.21362109583333, 35.21227227858611, 35.212143477686105, 35.21206429438392, 35.21201324768408, 35.211954206181964], "q1": [0.2058217000158038, 0.21301360003417358, 0.22004690003814176, 0.228331700025592, 0.2370742000057362, 0.251103399990825], "q9": [0.2058217000158038, 0.21301360003417358, 0.22004690003814176, 0.228331700025592, 0.2370742000057362, 0.251103399990825]}, "bar": {"y": 0.251103399990825, "times": [0.251103399990825], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 35.21195420608196, "max_f_0": 35.21227227858611}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.2058217000158038, 0.21301360003417358, 0.22004690003814176, 0.228331700025592, 0.2370742000057362, 0.251103399990825], "y": [8.803405273958376, 1.3298615156306184, 0.7373448927489434, 0.4108163764971451, 0.22956591402903825, 0.07897747105683806], "q1": [0.2058217000158038, 0.21301360003417358, 0.22004690003814176, 0.228331700025592, 0.2370742000057362, 0.251103399990825], "q9": [0.2058217000158038, 0.21301360003417358, 0.22004690003814176, 0.228331700025592, 0.2370742000057362, 0.251103399990825]}, "bar": {"y": 0.251103399990825, "times": [0.251103399990825], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.07897747095683806, "max_f_0": 1.3298615156306184}}}, "SLOPE[q=0.2,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.18994420001399703, 0.19807650000439025, 0.20580860000336543, 0.2126855999813415, 0.21973459995933808, 0.2352149999642279], "y": [35.21362109583333, 35.20871890744391, 35.20837361202958, 35.20810337182242, 35.207901729040195, 35.207644030969206], "q1": [0.18994420001399703, 0.19807650000439025, 0.20580860000336543, 0.2126855999813415, 0.21973459995933808, 0.2352149999642279], "q9": [0.18994420001399703, 0.19807650000439025, 0.20580860000336543, 0.2126855999813415, 0.21973459995933808, 0.2352149999642279]}, "bar": {"y": 0.2352149999642279, "times": [0.2352149999642279], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 35.207644030869204, "max_f_0": 35.20871890744391}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.18994420001399703, 0.19807650000439025, 0.20580860000336543, 0.2126855999813415, 0.21973459995933808, 0.2352149999642279], "y": [28.52303308762499, 15.620639327460768, 13.88693533516106, 12.188694509627545, 10.432594134514666, 7.093073933662502], "q1": [0.18994420001399703, 0.19807650000439025, 0.20580860000336543, 0.2126855999813415, 0.21973459995933808, 0.2352149999642279], "q9": [0.18994420001399703, 0.19807650000439025, 0.20580860000336543, 0.2126855999813415, 0.21973459995933808, 0.2352149999642279]}, "bar": {"y": 0.2352149999642279, "times": [0.2352149999642279], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 7.093073933562502, "max_f_0": 15.620639327460768}}}, "SLOPE[q=0.1,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.22529649999341927, 0.2333636999828741, 0.2428174999949988, 0.2514089999895077, 0.26056189998053014, 0.27669920001062565], "y": [35.21362109583333, 35.20874847354364, 35.20840100060651, 35.20812843480608, 35.20792361208376, 35.20765756332681], "q1": [0.22529649999341927, 0.2333636999828741, 0.2428174999949988, 0.2514089999895077, 0.26056189998053014, 0.27669920001062565], "q9": [0.22529649999341927, 0.2333636999828741, 0.2428174999949988, 0.2514089999895077, 0.26056189998053014, 0.27669920001062565]}, "bar": {"y": 0.27669920001062565, "times": [0.27669920001062565], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 35.20765756322681, "max_f_0": 35.20874847354364}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.22529649999341927, 0.2333636999828741, 0.2428174999949988, 0.2514089999895077, 0.26056189998053014, 0.27669920001062565], "y": [28.523033087624984, 16.57402951514551, 15.085704576180827, 13.44343834123745, 11.734658606194426, 8.439857867906156], "q1": [0.22529649999341927, 0.2333636999828741, 0.2428174999949988, 0.2514089999895077, 0.26056189998053014, 0.27669920001062565], "q9": [0.22529649999341927, 0.2333636999828741, 0.2428174999949988, 0.2514089999895077, 0.26056189998053014, 0.27669920001062565]}, "bar": {"y": 0.27669920001062565, "times": [0.27669920001062565], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 8.439857867806156, "max_f_0": 16.57402951514551}}}, "SLOPE[q=0.05,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.20217850001063198, 0.20939810000709258, 0.21791430001030676, 0.22497960002510808, 0.23249660001602024, 0.24658120001549833], "y": [35.21362109583333, 35.208775158683885, 35.20842642107824, 35.208152573381966, 35.207945654360095, 35.207673880435706], "q1": [0.20217850001063198, 0.20939810000709258, 0.21791430001030676, 0.22497960002510808, 0.23249660001602024, 0.24658120001549833], "q9": [0.20217850001063198, 0.20939810000709258, 0.21791430001030676, 0.22497960002510808, 0.23249660001602024, 0.24658120001549833]}, "bar": {"y": 0.24658120001549833, "times": [0.24658120001549833], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 35.207673880335705, "max_f_0": 35.208775158683885}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.20217850001063198, 0.20939810000709258, 0.21791430001030676, 0.22497960002510808, 0.23249660001602024, 0.24658120001549833], "y": [28.52303308762501, 17.366515077588392, 15.923909902957032, 14.329075966973331, 12.664133601591566, 9.431982160728396], "q1": [0.20217850001063198, 0.20939810000709258, 0.21791430001030676, 0.22497960002510808, 0.23249660001602024, 0.24658120001549833], "q9": [0.20217850001063198, 0.20939810000709258, 0.21791430001030676, 0.22497960002510808, 0.23249660001602024, 0.24658120001549833]}, "bar": {"y": 0.24658120001549833, "times": [0.24658120001549833], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 9.431982160628396, "max_f_0": 17.366515077588392}}}, "SLOPE[q=0.2,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.17985610000323504, 0.18666639999719337, 0.19352640002034605, 0.2004192000022158, 0.20771819999208674, 0.2214971999928821], "y": [35.21362109583333, 35.20772605961434, 35.207272033808785, 35.20687143145898, 35.20653747617327, 35.206039462960455], "q1": [0.17985610000323504, 0.18666639999719337, 0.19352640002034605, 0.2004192000022158, 0.20771819999208674, 0.2214971999928821], "q9": [0.17985610000323504, 0.18666639999719337, 0.19352640002034605, 0.2004192000022158, 0.20771819999208674, 0.2214971999928821]}, "bar": {"y": 0.2214971999928821, "times": [0.2214971999928821], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 35.20603946286045, "max_f_0": 35.20772605961434}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.17985610000323504, 0.18666639999719337, 0.19352640002034605, 0.2004192000022158, 0.20771819999208674, 0.2214971999928821], "y": [33.81916170043831, 30.359921855793196, 29.75539339896006, 29.008200361920352, 28.09738990055669, 26.413180980295657], "q1": [0.17985610000323504, 0.18666639999719337, 0.19352640002034605, 0.2004192000022158, 0.20771819999208674, 0.2214971999928821], "q9": [0.17985610000323504, 0.18666639999719337, 0.19352640002034605, 0.2004192000022158, 0.20771819999208674, 0.2214971999928821]}, "bar": {"y": 0.2214971999928821, "times": [0.2214971999928821], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 26.41318098019566, "max_f_0": 30.359921855793196}}}, "SLOPE[q=0.1,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.19654400000581518, 0.20481799999834038, 0.21209680000902154, 0.21988429999328218, 0.2283226999861654, 0.24374529998749495], "y": [35.21362109583333, 35.207733437389074, 35.2072794188096, 35.20687899984861, 35.206545321010275, 35.2060481963225], "q1": [0.19654400000581518, 0.20481799999834038, 0.21209680000902154, 0.21988429999328218, 0.2283226999861654, 0.24374529998749495], "q9": [0.19654400000581518, 0.20481799999834038, 0.21209680000902154, 0.21988429999328218, 0.2283226999861654, 0.24374529998749495]}, "bar": {"y": 0.24374529998749495, "times": [0.24374529998749495], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 35.2060481962225, "max_f_0": 35.207733437389074}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.19654400000581518, 0.20481799999834038, 0.21209680000902154, 0.21988429999328218, 0.2283226999861654, 0.24374529998749495], "y": [33.81916170043831, 30.664559698705393, 30.121630786139125, 29.422500782907964, 28.553986900594104, 26.988580883975136], "q1": [0.19654400000581518, 0.20481799999834038, 0.21209680000902154, 0.21988429999328218, 0.2283226999861654, 0.24374529998749495], "q9": [0.19654400000581518, 0.20481799999834038, 0.21209680000902154, 0.21988429999328218, 0.2283226999861654, 0.24374529998749495]}, "bar": {"y": 0.24374529998749495, "times": [0.24374529998749495], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 26.988580883875137, "max_f_0": 30.664559698705393}}}, "SLOPE[q=0.05,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.22436419999576174, 0.23244439999689348, 0.24050099999294616, 0.2479592000017874, 0.25551740001537837, 0.2718130000284873], "y": [35.21362109583333, 35.207740064623906, 35.207286201144136, 35.206886108129495, 35.20655283731518, 35.206056761517864], "q1": [0.22436419999576174, 0.23244439999689348, 0.24050099999294616, 0.2479592000017874, 0.25551740001537837, 0.2718130000284873], "q9": [0.22436419999576174, 0.23244439999689348, 0.24050099999294616, 0.2479592000017874, 0.25551740001537837, 0.2718130000284873]}, "bar": {"y": 0.2718130000284873, "times": [0.2718130000284873], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 35.20605676141786, "max_f_0": 35.207740064623906}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.22436419999576174, 0.23244439999689348, 0.24050099999294616, 0.2479592000017874, 0.25551740001537837, 0.2718130000284873], "y": [33.81916170043832, 30.886120892319457, 30.36880764749745, 29.702593158631757, 28.868588529409546, 27.37868928047361], "q1": [0.22436419999576174, 0.23244439999689348, 0.24050099999294616, 0.2479592000017874, 0.25551740001537837, 0.2718130000284873], "q9": [0.22436419999576174, 0.23244439999689348, 0.24050099999294616, 0.2479592000017874, 0.25551740001537837, 0.2718130000284873]}, "bar": {"y": 0.2718130000284873, "times": [0.2718130000284873], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 27.37868928037361, "max_f_0": 30.886120892319457}}}}, "breheny[dataset=Scheetz2006,standardize=False]": {"SLOPE[q=0.2,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.17406900000059977, 0.18009870001696981, 0.1873967999999877, 0.19594520001555793, 0.20333890002802946, 0.21814950002590194], "y": [35.21362109583333, 26.858845294603256, 26.764425483357513, 26.667496904966725, 26.58699899399039, 26.49792561442413], "q1": [0.17406900000059977, 0.18009870001696981, 0.1873967999999877, 0.19594520001555793, 0.20333890002802946, 0.21814950002590194], "q9": [0.17406900000059977, 0.18009870001696981, 0.1873967999999877, 0.19594520001555793, 0.20333890002802946, 0.21814950002590194]}, "bar": {"y": 0.21814950002590194, "times": [0.21814950002590194], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 26.49792561432413, "max_f_0": 26.858845294603256}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.17406900000059977, 0.18009870001696981, 0.1873967999999877, 0.19594520001555793, 0.20333890002802946, 0.21814950002590194], "y": [8.803405273958347, 0.447438505113702, 0.35298455664876016, 0.2560247303904042, 0.17550576810173624, 0.08641446602194236], "q1": [0.17406900000059977, 0.18009870001696981, 0.1873967999999877, 0.19594520001555793, 0.20333890002802946, 0.21814950002590194], "q9": [0.17406900000059977, 0.18009870001696981, 0.1873967999999877, 0.19594520001555793, 0.20333890002802946, 0.21814950002590194]}, "bar": {"y": 0.21814950002590194, "times": [0.21814950002590194], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.08641446592194237, "max_f_0": 0.447438505113702}}}, "SLOPE[q=0.1,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.19634660001611337, 0.2034404000150971, 0.20962650000001304, 0.21570689999498427, 0.22276530001545325, 0.23512890003621578], "y": [35.21362109583333, 27.236174393455606, 27.02284059707783, 26.827331939059953, 26.70291006441837, 26.57245074633685], "q1": [0.19634660001611337, 0.2034404000150971, 0.20962650000001304, 0.21570689999498427, 0.22276530001545325, 0.23512890003621578], "q9": [0.19634660001611337, 0.2034404000150971, 0.20962650000001304, 0.21570689999498427, 0.22276530001545325, 0.23512890003621578]}, "bar": {"y": 0.23512890003621578, "times": [0.23512890003621578], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 26.57245074623685, "max_f_0": 27.236174393455606}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.19634660001611337, 0.2034404000150971, 0.20962650000001304, 0.21570689999498427, 0.22276530001545325, 0.23512890003621578], "y": [8.803405273958287, 0.8248757905962663, 0.6114998621268768, 0.4159652509048932, 0.2915323435513848, 0.16106481601056544], "q1": [0.19634660001611337, 0.2034404000150971, 0.20962650000001304, 0.21570689999498427, 0.22276530001545325, 0.23512890003621578], "q9": [0.19634660001611337, 0.2034404000150971, 0.20962650000001304, 0.21570689999498427, 0.22276530001545325, 0.23512890003621578]}, "bar": {"y": 0.23512890003621578, "times": [0.23512890003621578], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.16106481591056543, "max_f_0": 0.8248757905962663}}}, "SLOPE[q=0.05,reg=0.5]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1925518999923952, 0.2012484000006225, 0.21055610000621527, 0.2220136999967508, 0.22980380000080913, 0.24590780003927648], "y": [35.21362109583333, 27.59025458154578, 27.256155459567807, 27.008667422077917, 26.854994826272993, 26.68160515400546], "q1": [0.1925518999923952, 0.2012484000006225, 0.21055610000621527, 0.2220136999967508, 0.22980380000080913, 0.24590780003927648], "q9": [0.1925518999923952, 0.2012484000006225, 0.21055610000621527, 0.2220136999967508, 0.22980380000080913, 0.24590780003927648]}, "bar": {"y": 0.24590780003927648, "times": [0.24590780003927648], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 26.681605153905462, "max_f_0": 27.59025458154578}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1925518999923952, 0.2012484000006225, 0.21055610000621527, 0.2220136999967508, 0.22980380000080913, 0.24590780003927648], "y": [8.803405273958422, 1.1789301979625861, 0.8448094964838617, 0.5973113639228984, 0.44363442386981333, 0.27024129725247903], "q1": [0.1925518999923952, 0.2012484000006225, 0.21055610000621527, 0.2220136999967508, 0.22980380000080913, 0.24590780003927648], "q9": [0.1925518999923952, 0.2012484000006225, 0.21055610000621527, 0.2220136999967508, 0.22980380000080913, 0.24590780003927648]}, "bar": {"y": 0.24590780003927648, "times": [0.24590780003927648], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.270241297152479, "max_f_0": 1.1789301979625861}}}, "SLOPE[q=0.2,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1784417000017129, 0.1850449000194203, 0.1919321000459604, 0.19850260004750453, 0.20480510004563257, 0.21866910002427176], "y": [35.21362109583333, 6.891991876478523, 6.887927398692398, 6.882718887727033, 6.876396389451421, 6.86047816486439], "q1": [0.1784417000017129, 0.1850449000194203, 0.1919321000459604, 0.19850260004750453, 0.20480510004563257, 0.21866910002427176], "q9": [0.1784417000017129, 0.1850449000194203, 0.1919321000459604, 0.19850260004750453, 0.20480510004563257, 0.21866910002427176]}, "bar": {"y": 0.21866910002427176, "times": [0.21866910002427176], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 6.86047816476439, "max_f_0": 6.891991876478523}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1784417000017129, 0.1850449000194203, 0.1919321000459604, 0.19850260004750453, 0.20480510004563257, 0.21866910002427176], "y": [28.52303308762504, 0.19771752460104874, 0.19363597306092206, 0.18840601800657097, 0.18205814070273618, 0.16607912559702953], "q1": [0.1784417000017129, 0.1850449000194203, 0.1919321000459604, 0.19850260004750453, 0.20480510004563257, 0.21866910002427176], "q9": [0.1784417000017129, 0.1850449000194203, 0.1919321000459604, 0.19850260004750453, 0.20480510004563257, 0.21866910002427176]}, "bar": {"y": 0.21866910002427176, "times": [0.21866910002427176], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.16607912549702952, "max_f_0": 0.19771752460104874}}}, "SLOPE[q=0.1,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1754170000203885, 0.18238140002358705, 0.18945240002358332, 0.19680960002006032, 0.2040026000177022, 0.21814640000229701], "y": [35.21362109583333, 7.073327570067766, 7.064499949648998, 7.053187414056962, 7.039454910107735, 7.0048800849802255], "q1": [0.1754170000203885, 0.18238140002358705, 0.18945240002358332, 0.19680960002006032, 0.2040026000177022, 0.21814640000229701], "q9": [0.1754170000203885, 0.18238140002358705, 0.18945240002358332, 0.19680960002006032, 0.2040026000177022, 0.21814640000229701]}, "bar": {"y": 0.21814640000229701, "times": [0.21814640000229701], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 7.0048800848802255, "max_f_0": 7.073327570067766}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1754170000203885, 0.18238140002358705, 0.18945240002358332, 0.19680960002006032, 0.2040026000177022, 0.21814640000229701], "y": [28.523033087624984, 0.37948886593997955, 0.3706350041538542, 0.3592898581047965, 0.345519291375739, 0.3108560803542231], "q1": [0.1754170000203885, 0.18238140002358705, 0.18945240002358332, 0.19680960002006032, 0.2040026000177022, 0.21814640000229701], "q9": [0.1754170000203885, 0.18238140002358705, 0.18945240002358332, 0.19680960002006032, 0.2040026000177022, 0.21814640000229701]}, "bar": {"y": 0.21814640000229701, "times": [0.21814640000229701], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.31085608025422307, "max_f_0": 0.37948886593997955}}}, "SLOPE[q=0.05,reg=0.1]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1986073000007309, 0.20582590001868084, 0.21274880002602004, 0.2200503000349272, 0.22787780003272928, 0.24239060003310442], "y": [35.21362109583333, 7.261354859635345, 7.24659390396632, 7.227677503731081, 7.204713860371307, 7.14689580622894], "q1": [0.1986073000007309, 0.20582590001868084, 0.21274880002602004, 0.2200503000349272, 0.22787780003272928, 0.24239060003310442], "q9": [0.1986073000007309, 0.20582590001868084, 0.21274880002602004, 0.2200503000349272, 0.22787780003272928, 0.24239060003310442]}, "bar": {"y": 0.24239060003310442, "times": [0.24239060003310442], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 7.14689580612894, "max_f_0": 7.261354859635345}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1986073000007309, 0.20582590001868084, 0.21274880002602004, 0.2200503000349272, 0.22787780003272928, 0.24239060003310442], "y": [28.523033087625002, 0.5673930507826919, 0.552607729283979, 0.5336616152411198, 0.5106641893721662, 0.45277207140731335], "q1": [0.1986073000007309, 0.20582590001868084, 0.21274880002602004, 0.2200503000349272, 0.22787780003272928, 0.24239060003310442], "q9": [0.1986073000007309, 0.20582590001868084, 0.21274880002602004, 0.2200503000349272, 0.22787780003272928, 0.24239060003310442]}, "bar": {"y": 0.24239060003310442, "times": [0.24239060003310442], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.45277207130731334, "max_f_0": 0.5673930507826919}}}, "SLOPE[q=0.2,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1898417999909725, 0.19662759997299872, 0.20400089997565374, 0.21133130000089295, 0.2188118000049144, 0.2337330000300426], "y": [35.21362109583333, 1.444547823707853, 1.4443739904226203, 1.4441512918220043, 1.443881046920987, 1.4432010714776924], "q1": [0.1898417999909725, 0.19662759997299872, 0.20400089997565374, 0.21133130000089295, 0.2188118000049144, 0.2337330000300426], "q9": [0.1898417999909725, 0.19662759997299872, 0.20400089997565374, 0.21133130000089295, 0.2188118000049144, 0.2337330000300426]}, "bar": {"y": 0.2337330000300426, "times": [0.2337330000300426], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.4432010713776924, "max_f_0": 1.444547823707853}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.1898417999909725, 0.19662759997299872, 0.20400089997565374, 0.21133130000089295, 0.2188118000049144, 0.2337330000300426], "y": [33.81916170043832, 0.04582440929355758, 0.04564604296604502, 0.045417568834773325, 0.045140359002968644, 0.044443065150787], "q1": [0.1898417999909725, 0.19662759997299872, 0.20400089997565374, 0.21133130000089295, 0.2188118000049144, 0.2337330000300426], "q9": [0.1898417999909725, 0.19662759997299872, 0.20400089997565374, 0.21133130000089295, 0.2188118000049144, 0.2337330000300426]}, "bar": {"y": 0.2337330000300426, "times": [0.2337330000300426], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.044443065050786996, "max_f_0": 0.04582440929355758}}}, "SLOPE[q=0.1,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.18543330000829883, 0.19290840000030585, 0.20059510000282899, 0.2077669000136666, 0.21480280000832863, 0.22852900001453236], "y": [35.21362109583333, 1.48504971382909, 1.484678163674828, 1.4842020825314255, 1.4836242364614904, 1.4821697518512322], "q1": [0.18543330000829883, 0.19290840000030585, 0.20059510000282899, 0.2077669000136666, 0.21480280000832863, 0.22852900001453236], "q9": [0.18543330000829883, 0.19290840000030585, 0.20059510000282899, 0.2077669000136666, 0.21480280000832863, 0.22852900001453236]}, "bar": {"y": 0.22852900001453236, "times": [0.22852900001453236], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.4821697517512322, "max_f_0": 1.48504971382909}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.18543330000829883, 0.19290840000030585, 0.20059510000282899, 0.2077669000136666, 0.21480280000832863, 0.22852900001453236], "y": [33.81916170043832, 0.08689736367907841, 0.08651897059087821, 0.08603417783719136, 0.08544585008649186, 0.08396539796516667], "q1": [0.18543330000829883, 0.19290840000030585, 0.20059510000282899, 0.2077669000136666, 0.21480280000832863, 0.22852900001453236], "q9": [0.18543330000829883, 0.19290840000030585, 0.20059510000282899, 0.2077669000136666, 0.21480280000832863, 0.22852900001453236]}, "bar": {"y": 0.22852900001453236, "times": [0.22852900001453236], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.08396539786516667, "max_f_0": 0.08689736367907841}}}, "SLOPE[q=0.05,reg=0.02]": {"objective_value": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.19999660001485609, 0.20741400003316812, 0.214492400031304, 0.2217087000317406, 0.23040000002947636, 0.24665310003911145], "y": [35.21362109583333, 1.5273436404243574, 1.5267297737814212, 1.5259431471095664, 1.5249882951219114, 1.5225845008103946], "q1": [0.19999660001485609, 0.20741400003316812, 0.214492400031304, 0.2217087000317406, 0.23040000002947636, 0.24665310003911145], "q9": [0.19999660001485609, 0.20741400003316812, 0.214492400031304, 0.2217087000317406, 0.23040000002947636, 0.24665310003911145]}, "bar": {"y": 0.24665310003911145, "times": [0.24665310003911145], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 1.5225845007103946, "max_f_0": 1.5273436404243574}}, "objective_duality_gap": {"solvers": {"Slope-PGD": {"scatter": {"x": [0.19999660001485609, 0.20741400003316812, 0.214492400031304, 0.2217087000317406, 0.23040000002947636, 0.24665310003911145], "y": [33.81916170043832, 0.12901951445753124, 0.12839917093356124, 0.12760432043240133, 0.12663959894788213, 0.12421150141838821], "q1": [0.19999660001485609, 0.20741400003316812, 0.214492400031304, 0.2217087000317406, 0.23040000002947636, 0.24665310003911145], "q9": [0.19999660001485609, 0.20741400003316812, 0.214492400031304, 0.2217087000317406, 0.23040000002947636, 0.24665310003911145]}, "bar": {"y": 0.24665310003911145, "times": [0.24665310003911145], "text": ""}, "color": "rgba(31.0, 119.0, 180.0, 1.0)", "marker": 1}}, "transformers": {"c_star": 0.12421150131838822, "max_f_0": 0.12901951445753124}}}}};
+
+            window.addEventListener("load", () => {
+                // Initialize plot state
+                setState({
+                    'dataset': document.getElementById('dataset_selector').value,
+                    'objective': document.getElementById('objective_selector').value,
+                    'objective_column': document.getElementById('objective_column').value,
+                    'plot_kind': document.getElementById('plot_kind').value,
+                    'scale': document.getElementById('change_scaling').value,
+                    'with_quantiles': document.getElementById('change_shades').checked,
+                    'hidden_solvers': []
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            /**
+ * Round with precision control
+ * https://github.com/plotly/d3/blob/6bb40cd42f6479be84efda3e50c8444b50d5905d/d3.js#L2189
+ */
+const d3round = (x, n) => {
+    return n ? Math.round(x * (n = Math.pow(10, n))) / n : Math.round(x);
+};
+
+/**
+ * Container of function that create path for SVG plot marker
+ * https://github.com/plotly/plotly.js/blob/b2df3710d7877ff5b4f85256015a88c8ea8fbe1d/src/components/drawing/symbol_defs.js#L13
+ */
+const SYMBOLDEFS = {
+    circle: {
+        n: 0,
+        f: r => {
+            var rs = d3round(r, 2);
+            return 'M' + rs + ',0A' + rs + ',' + rs + ' 0 1,1 0,-' + rs +
+                'A' + rs + ',' + rs + ' 0 0,1 ' + rs + ',0Z';
+        }
+    },
+    square: {
+        n: 1,
+        f: r => {
+            var rs = d3round(r, 2);
+            return 'M' + rs + ',' + rs + 'H-' + rs + 'V-' + rs + 'H' + rs + 'Z';
+        }
+    },
+    diamond: {
+        n: 2,
+        f: r => {
+            var rd = d3round(r * 1.3, 2);
+            return 'M' + rd + ',0L0,' + rd + 'L-' + rd + ',0L0,-' + rd + 'Z';
+        }
+    },
+    cross: {
+        n: 3,
+        f: r => {
+            var rc = d3round(r * 0.4, 2);
+            var rc2 = d3round(r * 1.2, 2);
+            return 'M' + rc2 + ',' + rc + 'H' + rc + 'V' + rc2 + 'H-' + rc +
+                'V' + rc + 'H-' + rc2 + 'V-' + rc + 'H-' + rc + 'V-' + rc2 +
+                'H' + rc + 'V-' + rc + 'H' + rc2 + 'Z';
+        }
+    },
+    x: {
+        n: 4,
+        f: r => {
+            var rx = d3round(r * 0.8 / Math.sqrt(2), 2);
+            var ne = 'l' + rx + ',' + rx;
+            var se = 'l' + rx + ',-' + rx;
+            var sw = 'l-' + rx + ',-' + rx;
+            var nw = 'l-' + rx + ',' + rx;
+            return 'M0,' + rx + ne + se + sw + se + sw + nw + sw + nw + ne + nw + ne + 'Z';
+        }
+    },
+    'triangle-up': {
+        n: 5,
+        f: r => {
+            var rt = d3round(r * 2 / Math.sqrt(3), 2);
+            var r2 = d3round(r / 2, 2);
+            var rs = d3round(r, 2);
+            return 'M-' + rt + ',' + r2 + 'H' + rt + 'L0,-' + rs + 'Z';
+        }
+    },
+    'triangle-down': {
+        n: 6,
+        f: r => {
+            var rt = d3round(r * 2 / Math.sqrt(3), 2);
+            var r2 = d3round(r / 2, 2);
+            var rs = d3round(r, 2);
+            return 'M-' + rt + ',-' + r2 + 'H' + rt + 'L0,' + rs + 'Z';
+        }
+    },
+    'triangle-left': {
+        n: 7,
+        f: r => {
+            var rt = d3round(r * 2 / Math.sqrt(3), 2);
+            var r2 = d3round(r / 2, 2);
+            var rs = d3round(r, 2);
+            return 'M' + r2 + ',-' + rt + 'V' + rt + 'L-' + rs + ',0Z';
+        }
+    },
+    'triangle-right': {
+        n: 8,
+        f: r => {
+            var rt = d3round(r * 2 / Math.sqrt(3), 2);
+            var r2 = d3round(r / 2, 2);
+            var rs = d3round(r, 2);
+            return 'M-' + r2 + ',-' + rt + 'V' + rt + 'L' + rs + ',0Z';
+        }
+    },
+    'triangle-ne': {
+        n: 9,
+        f: r => {
+            var r1 = d3round(r * 0.6, 2);
+            var r2 = d3round(r * 1.2, 2);
+            return 'M-' + r2 + ',-' + r1 + 'H' + r1 + 'V' + r2 + 'Z';
+        }
+    },
+    'triangle-se': {
+        n: 10,
+        f: r => {
+            var r1 = d3round(r * 0.6, 2);
+            var r2 = d3round(r * 1.2, 2);
+            return 'M' + r1 + ',-' + r2 + 'V' + r1 + 'H-' + r2 + 'Z';
+        }
+    },
+    'triangle-sw': {
+        n: 11,
+        f: r => {
+            var r1 = d3round(r * 0.6, 2);
+            var r2 = d3round(r * 1.2, 2);
+            return 'M' + r2 + ',' + r1 + 'H-' + r1 + 'V-' + r2 + 'Z';
+        }
+    },
+    'triangle-nw': {
+        n: 12,
+        f: r => {
+            var r1 = d3round(r * 0.6, 2);
+            var r2 = d3round(r * 1.2, 2);
+            return 'M-' + r1 + ',' + r2 + 'V-' + r1 + 'H' + r2 + 'Z';
+        }
+    },
+    pentagon: {
+        n: 13,
+        f: r => {
+            var x1 = d3round(r * 0.951, 2);
+            var x2 = d3round(r * 0.588, 2);
+            var y0 = d3round(-r, 2);
+            var y1 = d3round(r * -0.309, 2);
+            var y2 = d3round(r * 0.809, 2);
+            return 'M' + x1 + ',' + y1 + 'L' + x2 + ',' + y2 + 'H-' + x2 +
+                'L-' + x1 + ',' + y1 + 'L0,' + y0 + 'Z';
+        }
+    },
+    hexagon: {
+        n: 14,
+        f: r => {
+            var y0 = d3round(r, 2);
+            var y1 = d3round(r / 2, 2);
+            var x = d3round(r * Math.sqrt(3) / 2, 2);
+            return 'M' + x + ',-' + y1 + 'V' + y1 + 'L0,' + y0 +
+                'L-' + x + ',' + y1 + 'V-' + y1 + 'L0,-' + y0 + 'Z';
+        }
+    },
+    hexagon2: {
+        n: 15,
+        f: r => {
+            var x0 = d3round(r, 2);
+            var x1 = d3round(r / 2, 2);
+            var y = d3round(r * Math.sqrt(3) / 2, 2);
+            return 'M-' + x1 + ',' + y + 'H' + x1 + 'L' + x0 +
+                ',0L' + x1 + ',-' + y + 'H-' + x1 + 'L-' + x0 + ',0Z';
+        }
+    },
+    octagon: {
+        n: 16,
+        f: r => {
+            var a = d3round(r * 0.924, 2);
+            var b = d3round(r * 0.383, 2);
+            return 'M-' + b + ',-' + a + 'H' + b + 'L' + a + ',-' + b + 'V' + b +
+                'L' + b + ',' + a + 'H-' + b + 'L-' + a + ',' + b + 'V-' + b + 'Z';
+        }
+    },
+    star: {
+        n: 17,
+        f: r => {
+            var rs = r * 1.4;
+            var x1 = d3round(rs * 0.225, 2);
+            var x2 = d3round(rs * 0.951, 2);
+            var x3 = d3round(rs * 0.363, 2);
+            var x4 = d3round(rs * 0.588, 2);
+            var y0 = d3round(-rs, 2);
+            var y1 = d3round(rs * -0.309, 2);
+            var y3 = d3round(rs * 0.118, 2);
+            var y4 = d3round(rs * 0.809, 2);
+            var y5 = d3round(rs * 0.382, 2);
+            return 'M' + x1 + ',' + y1 + 'H' + x2 + 'L' + x3 + ',' + y3 +
+                'L' + x4 + ',' + y4 + 'L0,' + y5 + 'L-' + x4 + ',' + y4 +
+                'L-' + x3 + ',' + y3 + 'L-' + x2 + ',' + y1 + 'H-' + x1 +
+                'L0,' + y0 + 'Z';
+        }
+    },
+    hexagram: {
+        n: 18,
+        f: r => {
+            var y = d3round(r * 0.66, 2);
+            var x1 = d3round(r * 0.38, 2);
+            var x2 = d3round(r * 0.76, 2);
+            return 'M-' + x2 + ',0l-' + x1 + ',-' + y + 'h' + x2 +
+                'l' + x1 + ',-' + y + 'l' + x1 + ',' + y + 'h' + x2 +
+                'l-' + x1 + ',' + y + 'l' + x1 + ',' + y + 'h-' + x2 +
+                'l-' + x1 + ',' + y + 'l-' + x1 + ',-' + y + 'h-' + x2 + 'Z';
+        }
+    },
+    'star-triangle-up': {
+        n: 19,
+        f: r => {
+            var x = d3round(r * Math.sqrt(3) * 0.8, 2);
+            var y1 = d3round(r * 0.8, 2);
+            var y2 = d3round(r * 1.6, 2);
+            var rc = d3round(r * 4, 2);
+            var aPart = 'A ' + rc + ',' + rc + ' 0 0 1 ';
+            return 'M-' + x + ',' + y1 + aPart + x + ',' + y1 +
+                aPart + '0,-' + y2 + aPart + '-' + x + ',' + y1 + 'Z';
+        }
+    },
+    'star-triangle-down': {
+        n: 20,
+        f: r => {
+            var x = d3round(r * Math.sqrt(3) * 0.8, 2);
+            var y1 = d3round(r * 0.8, 2);
+            var y2 = d3round(r * 1.6, 2);
+            var rc = d3round(r * 4, 2);
+            var aPart = 'A ' + rc + ',' + rc + ' 0 0 1 ';
+            return 'M' + x + ',-' + y1 + aPart + '-' + x + ',-' + y1 +
+                aPart + '0,' + y2 + aPart + x + ',-' + y1 + 'Z';
+        }
+    },
+    'star-square': {
+        n: 21,
+        f: r => {
+            var rp = d3round(r * 1.1, 2);
+            var rc = d3round(r * 2, 2);
+            var aPart = 'A ' + rc + ',' + rc + ' 0 0 1 ';
+            return 'M-' + rp + ',-' + rp + aPart + '-' + rp + ',' + rp +
+                aPart + rp + ',' + rp + aPart + rp + ',-' + rp +
+                aPart + '-' + rp + ',-' + rp + 'Z';
+        }
+    },
+    'star-diamond': {
+        n: 22,
+        f: r => {
+            var rp = d3round(r * 1.4, 2);
+            var rc = d3round(r * 1.9, 2);
+            var aPart = 'A ' + rc + ',' + rc + ' 0 0 1 ';
+            return 'M-' + rp + ',0' + aPart + '0,' + rp +
+                aPart + rp + ',0' + aPart + '0,-' + rp +
+                aPart + '-' + rp + ',0' + 'Z';
+        }
+    },
+    'diamond-tall': {
+        n: 23,
+        f: r => {
+            var x = d3round(r * 0.7, 2);
+            var y = d3round(r * 1.4, 2);
+            return 'M0,' + y + 'L' + x + ',0L0,-' + y + 'L-' + x + ',0Z';
+        }
+    },
+    'diamond-wide': {
+        n: 24,
+        f: r => {
+            var x = d3round(r * 1.4, 2);
+            var y = d3round(r * 0.7, 2);
+            return 'M0,' + y + 'L' + x + ',0L0,-' + y + 'L-' + x + ',0Z';
+        }
+    },
+    hourglass: {
+        n: 25,
+        f: r => {
+            var rs = d3round(r, 2);
+            return 'M' + rs + ',' + rs + 'H-' + rs + 'L' + rs + ',-' + rs + 'H-' + rs + 'Z';
+        },
+        noDot: true
+    },
+    bowtie: {
+        n: 26,
+        f: r => {
+            var rs = d3round(r, 2);
+            return 'M' + rs + ',' + rs + 'V-' + rs + 'L-' + rs + ',' + rs + 'V-' + rs + 'Z';
+        },
+        noDot: true
+    },
+    'circle-cross': {
+        n: 27,
+        f: r => {
+            var rs = d3round(r, 2);
+            return 'M0,' + rs + 'V-' + rs + 'M' + rs + ',0H-' + rs +
+                'M' + rs + ',0A' + rs + ',' + rs + ' 0 1,1 0,-' + rs +
+                'A' + rs + ',' + rs + ' 0 0,1 ' + rs + ',0Z';
+        },
+        needLine: true,
+        noDot: true
+    },
+    'circle-x': {
+        n: 28,
+        f: r => {
+            var rs = d3round(r, 2);
+            var rc = d3round(r / Math.sqrt(2), 2);
+            return 'M' + rc + ',' + rc + 'L-' + rc + ',-' + rc +
+                'M' + rc + ',-' + rc + 'L-' + rc + ',' + rc +
+                'M' + rs + ',0A' + rs + ',' + rs + ' 0 1,1 0,-' + rs +
+                'A' + rs + ',' + rs + ' 0 0,1 ' + rs + ',0Z';
+        },
+        needLine: true,
+        noDot: true
+    },
+    'square-cross': {
+        n: 29,
+        f: r => {
+            var rs = d3round(r, 2);
+            return 'M0,' + rs + 'V-' + rs + 'M' + rs + ',0H-' + rs +
+                'M' + rs + ',' + rs + 'H-' + rs + 'V-' + rs + 'H' + rs + 'Z';
+        },
+        needLine: true,
+        noDot: true
+    },
+    'square-x': {
+        n: 30,
+        f: r => {
+            var rs = d3round(r, 2);
+            return 'M' + rs + ',' + rs + 'L-' + rs + ',-' + rs +
+                'M' + rs + ',-' + rs + 'L-' + rs + ',' + rs +
+                'M' + rs + ',' + rs + 'H-' + rs + 'V-' + rs + 'H' + rs + 'Z';
+        },
+        needLine: true,
+        noDot: true
+    },
+    'diamond-cross': {
+        n: 31,
+        f: r => {
+            var rd = d3round(r * 1.3, 2);
+            return 'M' + rd + ',0L0,' + rd + 'L-' + rd + ',0L0,-' + rd + 'Z' +
+                'M0,-' + rd + 'V' + rd + 'M-' + rd + ',0H' + rd;
+        },
+        needLine: true,
+        noDot: true
+    },
+    'diamond-x': {
+        n: 32,
+        f: r => {
+            var rd = d3round(r * 1.3, 2);
+            var r2 = d3round(r * 0.65, 2);
+            return 'M' + rd + ',0L0,' + rd + 'L-' + rd + ',0L0,-' + rd + 'Z' +
+                'M-' + r2 + ',-' + r2 + 'L' + r2 + ',' + r2 +
+                'M-' + r2 + ',' + r2 + 'L' + r2 + ',-' + r2;
+        },
+        needLine: true,
+        noDot: true
+    },
+    'cross-thin': {
+        n: 33,
+        f: r => {
+            var rc = d3round(r * 1.4, 2);
+            return 'M0,' + rc + 'V-' + rc + 'M' + rc + ',0H-' + rc;
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    'x-thin': {
+        n: 34,
+        f: r => {
+            var rx = d3round(r, 2);
+            return 'M' + rx + ',' + rx + 'L-' + rx + ',-' + rx +
+                'M' + rx + ',-' + rx + 'L-' + rx + ',' + rx;
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    asterisk: {
+        n: 35,
+        f: r => {
+            var rc = d3round(r * 1.2, 2);
+            var rs = d3round(r * 0.85, 2);
+            return 'M0,' + rc + 'V-' + rc + 'M' + rc + ',0H-' + rc +
+                'M' + rs + ',' + rs + 'L-' + rs + ',-' + rs +
+                'M' + rs + ',-' + rs + 'L-' + rs + ',' + rs;
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    hash: {
+        n: 36,
+        f: r => {
+            var r1 = d3round(r / 2, 2);
+            var r2 = d3round(r, 2);
+            return 'M' + r1 + ',' + r2 + 'V-' + r2 +
+                'm-' + r2 + ',0V' + r2 +
+                'M' + r2 + ',' + r1 + 'H-' + r2 +
+                'm0,-' + r2 + 'H' + r2;
+        },
+        needLine: true,
+        noFill: true
+    },
+    'y-up': {
+        n: 37,
+        f: r => {
+            var x = d3round(r * 1.2, 2);
+            var y0 = d3round(r * 1.6, 2);
+            var y1 = d3round(r * 0.8, 2);
+            return 'M-' + x + ',' + y1 + 'L0,0M' + x + ',' + y1 + 'L0,0M0,-' + y0 + 'L0,0';
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    'y-down': {
+        n: 38,
+        f: r => {
+            var x = d3round(r * 1.2, 2);
+            var y0 = d3round(r * 1.6, 2);
+            var y1 = d3round(r * 0.8, 2);
+            return 'M-' + x + ',-' + y1 + 'L0,0M' + x + ',-' + y1 + 'L0,0M0,' + y0 + 'L0,0';
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    'y-left': {
+        n: 39,
+        f: r => {
+            var y = d3round(r * 1.2, 2);
+            var x0 = d3round(r * 1.6, 2);
+            var x1 = d3round(r * 0.8, 2);
+            return 'M' + x1 + ',' + y + 'L0,0M' + x1 + ',-' + y + 'L0,0M-' + x0 + ',0L0,0';
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    'y-right': {
+        n: 40,
+        f: r => {
+            var y = d3round(r * 1.2, 2);
+            var x0 = d3round(r * 1.6, 2);
+            var x1 = d3round(r * 0.8, 2);
+            return 'M-' + x1 + ',' + y + 'L0,0M-' + x1 + ',-' + y + 'L0,0M' + x0 + ',0L0,0';
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    'line-ew': {
+        n: 41,
+        f: r => {
+            var rc = d3round(r * 1.4, 2);
+            return 'M' + rc + ',0H-' + rc;
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    'line-ns': {
+        n: 42,
+        f: r => {
+            var rc = d3round(r * 1.4, 2);
+            return 'M0,' + rc + 'V-' + rc;
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    'line-ne': {
+        n: 43,
+        f: r => {
+            var rx = d3round(r, 2);
+            return 'M' + rx + ',-' + rx + 'L-' + rx + ',' + rx;
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    'line-nw': {
+        n: 44,
+        f: r => {
+            var rx = d3round(r, 2);
+            return 'M' + rx + ',' + rx + 'L-' + rx + ',-' + rx;
+        },
+        needLine: true,
+        noDot: true,
+        noFill: true
+    },
+    'arrow-up': {
+        n: 45,
+        f: r => {
+            var rx = d3round(r, 2);
+            var ry = d3round(r * 2, 2);
+            return 'M0,0L-' + rx + ',' + ry + 'H' + rx + 'Z';
+        },
+        noDot: true
+    },
+    'arrow-down': {
+        n: 46,
+        f: r => {
+            var rx = d3round(r, 2);
+            var ry = d3round(r * 2, 2);
+            return 'M0,0L-' + rx + ',-' + ry + 'H' + rx + 'Z';
+        },
+        noDot: true
+    },
+    'arrow-left': {
+        n: 47,
+        f: r => {
+            var rx = d3round(r * 2, 2);
+            var ry = d3round(r, 2);
+            return 'M0,0L' + rx + ',-' + ry + 'V' + ry + 'Z';
+        },
+        noDot: true
+    },
+    'arrow-right': {
+        n: 48,
+        f: r => {
+            var rx = d3round(r * 2, 2);
+            var ry = d3round(r, 2);
+            return 'M0,0L-' + rx + ',-' + ry + 'V' + ry + 'Z';
+        },
+        noDot: true
+    },
+    'arrow-bar-up': {
+        n: 49,
+        f: r => {
+            var rx = d3round(r, 2);
+            var ry = d3round(r * 2, 2);
+            return 'M-' + rx + ',0H' + rx + 'M0,0L-' + rx + ',' + ry + 'H' + rx + 'Z';
+        },
+        needLine: true,
+        noDot: true
+    },
+    'arrow-bar-down': {
+        n: 50,
+        f: r => {
+            var rx = d3round(r, 2);
+            var ry = d3round(r * 2, 2);
+            return 'M-' + rx + ',0H' + rx + 'M0,0L-' + rx + ',-' + ry + 'H' + rx + 'Z';
+        },
+        needLine: true,
+        noDot: true
+    },
+    'arrow-bar-left': {
+        n: 51,
+        f: r => {
+            var rx = d3round(r * 2, 2);
+            var ry = d3round(r, 2);
+            return 'M0,-' + ry + 'V' + ry + 'M0,0L' + rx + ',-' + ry + 'V' + ry + 'Z';
+        },
+        needLine: true,
+        noDot: true
+    },
+    'arrow-bar-right': {
+        n: 52,
+        f: r => {
+            var rx = d3round(r * 2, 2);
+            var ry = d3round(r, 2);
+            return 'M0,-' + ry + 'V' + ry + 'M0,0L-' + rx + ',-' + ry + 'V' + ry + 'Z';
+        },
+        needLine: true,
+        noDot: true
+    }
+};
+
+const DOTPATH = 'M0,0.5L0.5,0L0,-0.5L-0.5,0Z';
+
+const drawing = {
+    symbolFuncs: [],
+};
+
+/**
+ * Create arrays of symbol functions.
+ * https://plotly.com/javascript/reference/scatter/#scatter-marker-symbol
+ */
+Object.keys(SYMBOLDEFS).forEach(function(k) {
+    var symDef = SYMBOLDEFS[k];
+    var n = symDef.n;
+    drawing.symbolFuncs[n] = symDef.f;
+});
+
+/**
+ * Returns a <path></path> element that have to be placed in a <svg></svg> element.
+ * 
+ * @param {int} symbolNumber
+ * @param {String} color
+ * @return {Element}
+ */
+const createPathElement = (symbolNumber, color) => {
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    // d is the shape of the symbol.
+    path.setAttribute('d', createPathString(symbolNumber, 5));
+    // Translation must be the half of the svg size to have the symbol centered.
+    path.setAttribute('transform', 'translate(15, 15)');
+
+    // If svg is type "open" or "open-dot" : https://plotly.com/javascript/reference/scatter/#scatter-marker-symbol
+    if ((100 <= symbolNumber && symbolNumber < 200) || 300 <= symbolNumber) {
+        path.setAttribute('stroke', color);
+        path.setAttribute('stroke-width', 0.5);
+        path.setAttribute('stroke-opacity', 1);
+        path.setAttribute('fill', 'white');
+    }
+
+    // If svg is type "normal" or "dot" : https://plotly.com/javascript/reference/scatter/#scatter-marker-symbol
+    if (symbolNumber < 100 || (200 <= symbolNumber && symbolNumber < 300)) {
+        path.setAttribute('fill-opacity', 1);
+        path.setAttribute('fill', color);
+    }
+
+    // If svg is type "dot" : https://plotly.com/javascript/reference/scatter/#scatter-marker-symbol
+    if (200 <= symbolNumber && symbolNumber < 300) {
+        path.setAttribute('stroke', 'black');
+        path.setAttribute('stroke-width', 0.5);
+        path.setAttribute('stroke-opacity', 1);
+    }
+    
+    return path;
+}
+
+/**
+ * Returns the string corresponding of the symbol shape requested by symbolNumber.
+ * 
+ * @param {int} symbolNumber
+ * @param {int} r size of the symbol (currently, we request a 5)
+ * @returns {String} this string must be placed in the "d" attribute of <path></path> SVG element.
+ */
+function createPathString(symbolNumber, r) {
+    var base = symbolNumber % 100;
+    return drawing.symbolFuncs[base](r) + (symbolNumber >= 200 ? DOTPATH : '');
+}
+
+            const NON_CONVERGENT_COLOR = 'rgba(0.8627, 0.8627, 0.8627)'
+
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * STATE MANAGEMENT
+ * 
+ * The state represent the plot state. It's an object
+ * that is stored into the window.state variable.
+ * 
+ * Do not manually update window.state,
+ * instead, foreach state modification,
+ * you shoud call the setState() function
+ * to keep the plot in sync with its state.
+ * 
+ * The state contains the following keys :
+ *   - dataset (string),
+ *   - objective (string),
+ *   - objective_column (string),
+ *   - plot_kind (string),
+ *   - scale (string)
+ *   - with_quantiles (boolean)
+ *   - hidden_solvers (array)
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+/**
+ * Update the state and create/update the plot
+ * using the new state.
+ * 
+ * @param {Object} partialState 
+ */
+const setState = (partialState) => {
+  window.state = {...state(), ...partialState};
+  displayScatterElements(!isBarChart());
+  makePlot();
+  makeLegend();
+}
+
+/**
+ * Retrieve the state object from window.state
+ * 
+ * @returns Object
+ */
+const state = () => window.state;
+
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * PLOT MANAGEMENT
+ * 
+ * Retrieve formatted data for PlotlyJS using state
+ * and create/update the plot.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+/**
+ * Create/Update the plot.
+ */
+const makePlot = () => {
+  const div = document.getElementById('unique_plot');
+  const data = isBarChart() ? getBarData() : getScatterCurves();
+  const layout = isBarChart() ? getBarChartLayout() : getScatterChartLayout();
+
+  Plotly.react(div, data, layout);
+};
+
+/**
+ * Gives the data formatted for plotlyJS bar chart.
+ * 
+ * @returns {array}
+ */
+const getBarData = () => {
+  if (!isAvailable()) return [{type:'bar'}];
+
+  const {x, y, colors, texts} = barDataToArrays()
+
+  // Add bars
+  const barData = [{
+    type: 'bar',
+    x: x,
+    y: y,
+    marker: {
+      color: colors,
+    },
+    text: texts,
+    textposition: 'inside',
+    insidetextanchor: 'middle',
+    textangle: '-90',
+  }];
+
+  x.forEach(solver => {
+    // Add times for each convergent solver
+    // Check if text is not 'Did not converge'
+    if (data(solver).bar.text === '') {
+      let nbTimes = data(solver).bar.times.length
+
+      barData.push({
+        type: 'scatter',
+        x: new Array(nbTimes).fill(solver),
+        y: data(solver).bar.times,
+        marker: {
+          color: 'black',
+          symbol: 'line-ew-open'
+        },
+        line: {
+          width: 0
+        },
+      });
+    }
+  });
+
+  return barData;
+};
+
+/**
+ * Gives the data formatted for plotlyJS scatter chart.
+ * 
+ * @returns {array}
+ */
+const getScatterCurves = () => {
+  // create a list of object to plot in plotly
+  const curves = [];
+
+  // For each solver, add the median curve with proper style and visibility.
+  getSolvers().forEach(solver => {
+    curves.push({
+      type: 'scatter',
+      name: solver,
+      mode: 'lines+markers',
+      line: {
+        color: data(solver).color,
+      },
+      marker: {
+        symbol: data(solver).marker,
+        size: 10,
+      },
+      legendgroup: solver,
+      hovertemplate: solver + ' <br> (%{x:.1e},%{y:.1e}) <extra></extra>',
+      visible: isVisible(solver) ? true : 'legendonly',
+      x: data(solver).scatter.x,
+      y: useTransformer(data(solver).scatter.y, 'y', data().transformers),
+    });
+
+    if (state().with_quantiles) {
+      // Add shaded area for each solver, with proper style and visibility.
+      curves.push({
+        type: 'scatter',
+        mode: 'lines',
+        showlegend: false,
+        line: {
+          width: 0,
+          color: data(solver).color,
+        },
+        legendgroup: solver,
+        hovertemplate: '(%{x:.1e},%{y:.1e}) <extra></extra>',
+        visible: isVisible(solver) ? true : 'legendonly',
+        x: data(solver).scatter.q1,
+        y: data(solver).scatter.y,
+      }, {
+        type: 'scatter',
+        mode: 'lines',
+        showlegend: false,
+        fill: 'tonextx',
+        line: {
+          width: 0,
+          color: data(solver).color,
+        },
+        legendgroup: solver,
+        hovertemplate: '(%{x:.1e},%{y:.1e}) <extra></extra>',
+        visible: isVisible(solver) ? true : 'legendonly',
+        x: data(solver).scatter.q9,
+        y: data(solver).scatter.y,
+      });
+    }
+  });
+
+  return curves;
+};
+
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * DATA TRANSFORMERS
+ * 
+ * Transformers are used to modify data
+ * on the fly.
+ * 
+ * WARNING : If you add a new transformer function,
+ * don't forget to register it in the object : window.tranformers,
+ * at the end of this section.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+/**
+ * Select the right transformer according to the state.
+ * If the requested transformer does not exists,
+ * it returns raw data.
+ * 
+ * @param {Object} data 
+ * @param {String} solver 
+ * @param {String} axis it could be x, y, q1, q9
+ * @returns {array}
+ */
+const useTransformer = (data, axis, options) => {
+  try {
+    let transformer = 'transformer_' + axis + '_' + state().plot_kind;
+    return window.transformers[transformer](data, options);
+  } catch(error) {
+    return data;
+  }
+};
+
+/**
+ * Transform data on the y axis for subotimality curve.
+ * 
+ * @param {Object} data 
+ * @param {String} solver 
+ * @returns {array}
+ */
+const transformer_y_suboptimality_curve = (y, options) => {
+  // Retrieve c_star value
+  const c_star = options.c_star;
+  
+  // Compute suboptimality for each data
+  return y.map(value => value - c_star);
+};
+
+/**
+ * Transform data ont the y axis for relative suboptimality curve.
+ * 
+ * @param {Object} data 
+ * @param {String} solver 
+ * @returns {array}
+ */
+const transformer_y_relative_suboptimality_curve = (y, options) => {
+  // Retrieve transformer values
+  const c_star = options.c_star;
+  const max_f_0 = options.max_f_0;
+
+  // Compute relative suboptimality for each data
+  return y.map(value => (value - c_star) / (max_f_0 - c_star));
+};
+
+/**
+ * Store all the transformer functions to be callable
+ * by the useTransformer function.
+ */
+window.transformers = {
+  transformer_y_suboptimality_curve,
+  transformer_y_relative_suboptimality_curve,
+};
+
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * TOOLS
+ * 
+ * Various functions to simplify life.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+const data = (solver = null) => {
+  return solver ?
+    window.data[state().dataset][state().objective][state().objective_column].solvers[solver]:
+    window.data[state().dataset][state().objective][state().objective_column]
+}
+
+const getSolvers = () => Object.keys(data().solvers);
+
+const isBarChart = () => state().plot_kind === 'bar_chart';
+
+const isVisible = solver => !state().hidden_solvers.includes(solver);
+
+const isSolverAvailable = solver => data(solver).scatter.y.filter(value => !isNaN(value)).length > 0;
+
+const isSmallScreen = () => window.screen.availHeight < 900;
+
+/**
+ * Check for each solver
+ * if data is available
+ * 
+ * @returns {Boolean}
+ */
+const isAvailable = () => {
+  let isNotAvailable = true;
+
+  getSolvers().forEach(solver => {
+    if (isSolverAvailable(solver)) {
+      isNotAvailable = false;
+    }
+  });
+
+  return !isNotAvailable;
+}
+
+const displayScatterElements = shouldBeVisible => {
+  if (shouldBeVisible) {
+    document.getElementById('change_scaling').style.display = 'inline-block';
+    document.getElementById('legend_container').style.display = 'block';
+    document.getElementById('plot_legend').style.display = 'flex';
+  } else {
+    document.getElementById('change_scaling').style.display = 'none';
+    document.getElementById('legend_container').style.display = 'none';
+    document.getElementById('plot_legend').style.display = 'none';
+  }
+};
+
+const barDataToArrays = () => {
+  const colors = [], texts = [], x = [], y = [];
+
+  getSolvers().forEach(solver => {
+    x.push(solver);
+    y.push(data(solver).bar.y);
+    colors.push(data(solver).bar.text === '' ? data(solver).color : NON_CONVERGENT_COLOR);
+    texts.push(data(solver).bar.text);
+  });
+
+  return {x, y, colors, texts}
+}
+
+const getScale = () => {
+  switch (state().scale) {
+    case 'loglog':
+      return {
+        xaxis: 'log',
+        yaxis: 'log',
+      };
+    case "semilog-y":
+      return {
+        xaxis: 'linear',
+        yaxis: 'log',
+      };
+    case "semilog-x":
+      return {
+        xaxis: 'log',
+        yaxis: 'linear',
+      };
+    case "linear":
+      return {
+        xaxis: 'linear',
+        yaxis: 'linear',
+      };
+    default:
+      console.error('Unknown scale value : ' + state().scale);
+  }
+}
+
+const getScatterChartLayout = () => {
+  const layout = {
+    autosize: !isSmallScreen(),
+    modebar: {
+      orientation: 'v',
+    },
+    height: 700,
+    showlegend: false,
+    legend: {
+      title: {
+        text: 'Solvers',
+      },
+      orientation: 'h',
+      xanchor: 'center',
+      yanchor: 'top',
+      y: -.2,
+      x: .5
+    },
+    xaxis: {
+      type: getScale().xaxis,
+      title: 'Time [sec]',
+      tickformat: '.1e',
+      tickangle: -45,
+      gridcolor: '#ffffff',
+      zeroline : false,
+    },
+    yaxis: {
+      type: getScale().yaxis,
+      title: getYLabel(),
+      tickformat: '.1e',
+      gridcolor: '#ffffff',
+      zeroline : false,
+    },
+    title: `${state().objective}<br />Data: ${state().dataset}`,
+    plot_bgcolor: '#e5ecf6',
+  };
+
+  if (isSmallScreen()) {
+    layout.width = 900;
+    layout.height = window.screen.availHeight - 200;
+    layout.dragmode = false;
+  }
+
+  if (!isAvailable()) {
+    layout.annotations = [{
+      xref: 'paper',
+      yref: 'paper',
+      x: 0.5,
+      y: 0.5,
+      text: 'Not available',
+      showarrow: false,
+      font: {
+        color: 'black',
+        size: 32,
+      }
+    }];
+  };
+
+  return layout;
+};
+
+const getBarChartLayout = () => {
+
+  const layout = {
+    autosize: !isSmallScreen(),
+    modebar: {
+      orientation: 'v',
+    },
+    yaxis: {
+      type: 'log',
+      title: 'Time [sec]',
+      tickformat: '.1e',
+      gridcolor: '#ffffff',
+    },
+    xaxis: {
+      tickangle: -60,
+      ticktext: getSolvers(),
+    },
+    showlegend: false,
+    title: `${state().objective}<br />Data: ${state().dataset}`,
+    plot_bgcolor: '#e5ecf6',
+  };
+
+  if (isSmallScreen()) {
+    layout.width = 900;
+    layout.height = window.screen.availHeight - 200;
+    layout.dragmode = false;
+  }
+
+  if (!isAvailable()) {
+    layout.annotations = [{
+      xref: 'paper',
+      yref: 'paper',
+      x: 0.5,
+      y: 0.5,
+      text: 'Not available',
+      showarrow: false,
+      font: {
+        color: 'black',
+        size: 32,
+      }
+    }];
+  };
+
+  return layout;
+};
+
+const getYLabel = () => {
+  switch(state().plot_kind) {
+    case 'objective_curve':
+      return 'F(x)';
+    case 'suboptimality_curve':
+      return 'F(x) - F(x*)';
+    case 'relative_suboptimality_curve':
+      return 'F(x) - F(x*) / F(x0) - F(x*)'
+    case 'bar_chart':
+      return 'Time [sec]';
+    default:
+      return 'unknown';
+  };
+};
+
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * MANAGE HIDDEN SOLVERS
+ * 
+ * Functions to hide/display and memorize solvers which were clicked
+ * by user on the legend of the plot.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+const getSolverFromEvent = event => {
+  const target = event.currentTarget;
+
+  for (let i = 0; i < target.children.length; i++) {
+    if (target.children[i].className == 'solver') {
+      return target.children[i].firstChild.nodeValue;
+    }
+  }
+
+  return null;
+};
+
+const purgeHiddenSolvers = () => setState({hidden_solvers: []});
+
+const hideAllSolversExcept = solver => {setState({hidden_solvers: getSolvers().filter(elmt => elmt !== solver)})};
+
+const hideSolver = solver => isVisible(solver) ? setState({hidden_solvers: [...state().hidden_solvers, solver]}) : null;
+
+const showSolver = solver => setState({hidden_solvers: state().hidden_solvers.filter(hidden => hidden !== solver)});
+
+/**
+ * Add or remove solver name from the list of hidden solvers.
+ * 
+ * @param {String} solver
+ * @returns {void}
+ */
+const handleSolverClick = solver => {
+  if (!isVisible(solver)) {
+    showSolver(solver);
+
+    return;
+  }
+
+  hideSolver(solver);
+};
+
+const handleSolverDoubleClick = solver => {
+  // If all solvers except one are hidden, so double click should show all solvers
+  if (state().hidden_solvers.length === getSolvers().length - 1) {
+    purgeHiddenSolvers();
+
+    return;
+  }
+
+  hideAllSolversExcept(solver);
+};
+
+/**
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * MANAGE PLOT LEGEND
+ * 
+ * We don't use the plotly legend to keep control
+ * on the size of the plot.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+/**
+ * Creates the legend at the bottom of the plot.
+ */
+const makeLegend = () => {
+  const legend = document.getElementById('plot_legend');
+
+  legend.innerHTML = '';
+
+  Object.keys(data().solvers).forEach(solver => {
+    const color = data().solvers[solver].color;
+    const symbolNumber = data().solvers[solver].marker;
+
+    legend.appendChild(createLegendItem(solver, color, symbolNumber));
+  });
+}
+
+/**
+ * Creates a legend item which contains the solver name,
+ * the solver marker as an SVG and an horizontal bar with
+ * the solver color.
+ * 
+ * @param {String} solver
+ * @param {String} color
+ * @param {int} symbolNumber
+ * @retuns {HTMLElement}
+ */
+const createLegendItem = (solver, color, symbolNumber) => {
+  // Create item container
+  const item = document.createElement('div');
+  item.style.display = 'flex';
+  item.style.flexDirection = 'row';
+  item.style.alignItems = 'center';
+  item.style.position = 'relative';
+  item.style.cursor = 'pointer';
+  item.className = 'bg-white py-1 px-4 shadow-sm mt-2 rounded'
+
+  if (!isVisible(solver)) {
+    item.style.opacity = 0.5;
+  }
+
+  // Click on a solver in the legend
+  item.addEventListener('click', event => {
+    solver = getSolverFromEvent(event);
+
+    if (!getSolvers().includes(solver)) {
+      console.error('An invalid solver has been handled during the click event.');
+
+      return;
+    }
+
+    // In javascript we must simulate double click.
+    // So first click is handled and kept in memory (window.clickedSolver)
+    // during 500ms, if nothing else happen timeout will execute
+    // single click function. However, if an other click happen during this
+    // 500ms, it clears the timeout and execute the double click function.
+    if (!window.clickedSolver) {
+      window.clickedSolver = solver;
+
+      // Timeout will execute single click function after 500ms
+      window.clickedTimeout = setTimeout(() => {
+        window.clickedSolver = null;
+        
+        handleSolverClick(solver);
+      }, 500);
+    } else if (window.clickedSolver === solver) {
+      clearTimeout(window.clickedTimeout);
+      window.clickedSolver = null;
+      handleSolverDoubleClick(solver);
+    }
+  });
+
+  // Create the HTML text node for the solver name in the legend
+  const textContainer = document.createElement('div');
+  textContainer.style.marginLeft = '0.5rem';
+  textContainer.className = 'solver';
+  textContainer.appendChild(document.createTextNode(solver));
+
+  // Create the horizontal bar in the legend to represent the curve
+  const hBar = document.createElement('div');
+  hBar.style.height = '2px';
+  hBar.style.width = '30px';
+  hBar.style.backgroundColor = color;
+  hBar.style.position = 'absolute';
+  hBar.style.left = '1em';
+  hBar.style.zIndex = 10;
+
+  // Append elements to the legend item
+  item.appendChild(createSymbol(symbolNumber, color));
+  item.appendChild(hBar);
+  item.appendChild(textContainer);
+
+  return item;
+}
+
+/**
+ * Create the same svg symbol as plotly.
+ * Returns an <svg> HTML Element
+ * 
+ * @param {int} symbolNumber 
+ * @param {String} color 
+ * @returns {HTMLElement}
+ */
+const createSymbol = (symbolNumber, color) => {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+
+  svg.setAttribute('width', 30);
+  svg.setAttribute('height', 30);
+  svg.style.zIndex = 20;
+
+  // createPathElement() come from the local file symbols.js
+  svg.appendChild(createPathElement(symbolNumber, color));
+
+  return svg;
+}
+
+/**
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * EVENT REGISTRATIONS
+ * 
+ * Some events are also registered in result.html.
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+document.getElementById('btn-plot-config').addEventListener('click', () => {
+  const elmt = document.getElementById('mobile-plot-form');
+
+  if (elmt.style.display === 'block') {
+      elmt.style.display = 'none';
+
+      return;
+  }
+
+  elmt.style.display = 'block';
+});
+
+document.getElementById('btn-main-menu').addEventListener('click', () => {
+  const elmt = document.getElementById('mobile-menu');
+
+  if (elmt.style.display === 'block') {
+      elmt.style.display = 'none';
+
+      return;
+  }
+
+  elmt.style.display = 'block';
+});
+
+        </script>
+    </body>
+</html>

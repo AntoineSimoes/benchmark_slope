@@ -4,7 +4,7 @@ with safe_import_context() as import_ctx:
     import numpy as np
     from scipy import sparse
     from numpy.linalg import norm
-    prox_slope = import_ctx.import_from('utils', 'prox_slope')
+    prox_l1sorted = import_ctx.import_from('utils', 'prox_l1sorted')
 
 
 class Solver(BaseSolver):
@@ -23,7 +23,7 @@ class Solver(BaseSolver):
         'vol. 2, no. 1, pp. 183-202 (2009)'
     ]
 
-    def skip(self, X, y, lambdas):
+    def skip(self, X, y, alphas):
         fit_intercept = False
         # XXX - not implemented but not too complicated to implement
         if fit_intercept:
@@ -31,8 +31,8 @@ class Solver(BaseSolver):
 
         return False, None
 
-    def set_objective(self, X, y, lambdas):
-        self.X, self.y, self.lambdas = X, y, lambdas
+    def set_objective(self, X, y, alphas):
+        self.X, self.y, self.lambdas = X, y, alphas
         self.fit_intercept = False
 
     def st(self, w, mu):
@@ -49,8 +49,8 @@ class Solver(BaseSolver):
             L = sparse.linalg.svds(self.X, k=1)[1][0] ** 2
         return L
 
-    def run(self, callback=None):
-        fit_intercept = False,
+    def run(self, callback):
+        fit_intercept = False
         n_samples, n_features = self.X.shape
         R = self.y.copy()
         w = np.zeros(n_features)
@@ -68,8 +68,9 @@ class Solver(BaseSolver):
         if fit_intercept:
             w = np.hstack((intercept, w))
         while callback(w):
-            w_new = prox_slope(z + (self.X.T @ R) / (L * n_samples),
-                               self.lambdas / L)
+            w_new = prox_l1sorted(z + (self.X.T @ R) / (L * n_samples),
+                                  self.lambdas / L)
+            print('w=', w_new)
             t_new = (1 + np.sqrt(1 + 4 * t**2)) / 2
             z = w_new + (t - 1) / t_new * (w_new - w)
             w = w_new
