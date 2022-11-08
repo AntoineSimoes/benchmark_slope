@@ -5,6 +5,7 @@ with safe_import_context() as import_ctx:
     from scipy import sparse
     from numpy.linalg import norm
     prox_l1sorted = import_ctx.import_from('utils', 'prox_l1sorted')
+    prox_slope = import_ctx.import_from('utils', 'prox_slope')
 
 
 class Solver(BaseSolver):
@@ -12,7 +13,7 @@ class Solver(BaseSolver):
     stopping_strategy = "callback"
 
     # any parameter defined here is accessible as a class attribute
-    parameters = {}
+    parameters = {'prox': ['prox_l1sorted', 'prox_slope']}
     references = [
         'I. Daubechies, M. Defrise and C. De Mol, '
         '"An iterative thresholding algorithm for linear inverse problems '
@@ -68,9 +69,14 @@ class Solver(BaseSolver):
         if fit_intercept:
             w = np.hstack((intercept, w))
         while callback(w):
-            w_new = prox_l1sorted(z + (self.X.T @ R) / (L * n_samples),
-                                  self.lambdas / L)
-            print('w=', w_new)
+            if self.prox == 'prox_l1sorted':
+                w_new = prox_l1sorted(z + (self.X.T @ R) / (L * n_samples),
+                                      self.lambdas / L)
+            elif self.prox == 'prox_slope':
+                w_new = prox_slope(z + (self.X.T @ R) / (L * n_samples),
+                                        self.lambdas / L)
+            print(w)
+
             t_new = (1 + np.sqrt(1 + 4 * t**2)) / 2
             z = w_new + (t - 1) / t_new * (w_new - w)
             w = w_new
